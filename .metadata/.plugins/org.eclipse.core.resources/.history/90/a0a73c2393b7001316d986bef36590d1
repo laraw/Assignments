@@ -1,6 +1,8 @@
 package lms.model;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class BorrowingHistory {
 
@@ -18,23 +20,20 @@ public class BorrowingHistory {
 		
 		double totallatefees = 0;
 		
-		Iterator<HistoryRecord> iter = records.iterator();
-		
-		while(iter.hasNext()) {
-			totallatefees += iter.next().getFeePayed();
+		for (int i = 0; i <= records.size(); i++) {
+			 totallatefees += records.get(i).getHolding().calculateLateFee();
+			 
+			 		
 		}
 		
 		return totallatefees;
 	}
 	
 	public HistoryRecord getHistoryRecord(int recordID) {
-		
-		Iterator<HistoryRecord> iter = records.iterator();
-		
-		while iter.h
+		return records.
 	}
 	
-	public Set<HistoryRecord> getAllHistoryRecords() {
+	public HashSet<HistoryRecord> getAllHistoryRecords() {
 		return records;
 	}
 	

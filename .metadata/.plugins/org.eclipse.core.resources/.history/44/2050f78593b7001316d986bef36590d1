@@ -28,10 +28,7 @@ public class BorrowingHistory {
 	}
 	
 	public HistoryRecord getHistoryRecord(int recordID) {
-		
-		Iterator<HistoryRecord> iter = records.iterator();
-		
-		while iter.h
+		return records.
 	}
 	
 	public Set<HistoryRecord> getAllHistoryRecords() {
