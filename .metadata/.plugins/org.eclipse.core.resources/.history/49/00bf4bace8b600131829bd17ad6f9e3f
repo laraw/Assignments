@@ -1,0 +1,9 @@
+package lms.model;
+
+public class LibraryCollection {
+
+	public LibraryCollection() {
+		private ArrayList<Holding>;
+	}
+
+}

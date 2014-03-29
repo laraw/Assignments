@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="public double calculateLateFee() {" key="selection"/>
+		<list key="findhistory">
+			<item value="public double calculateLateFee() {"/>
+			<item value="&#x09;&#x09;System.out.printf(&quot;Price: &quot; + &quot;%-10.2f&quot;, item.getPrice() + itemTax);"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="404" key="DIALOG_Y_ORIGIN"/>
+		<item value="729" key="DIALOG_X_ORIGIN"/>
+	</section>
+</section>

@@ -1,0 +1,14 @@
+package lms.model.exception;
+
+public class MultipleBorrowingException extends LMSException {
+
+	public MultipleBorrowingException() {
+		
+	}
+
+	public MultipleBorrowingException(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
+
+}

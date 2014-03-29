@@ -1,0 +1,25 @@
+package TuteLab2;
+
+public class AudioPlayerUnit {
+	
+	private AudioDisc[] cassette;
+	private String unitState = "On";
+	private int numDiscs;
+	
+	
+	public AudioPlayerUnit() {
+		
+	}
+
+	public AudioPlayerUnit(AudioDisc[] cassette, String unitState) {
+		this.cassette = cassette;
+		this.unitState = unitState;
+	}
+	
+	public AudioPlayerUnit(AudioDisc[] cassette, String unitState, int numDiscs) {
+		this(cassette, unitState);
+		this.numDiscs = numDiscs;
+	}
+	
+
+}

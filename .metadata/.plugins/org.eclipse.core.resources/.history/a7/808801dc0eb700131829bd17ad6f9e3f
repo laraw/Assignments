@@ -1,0 +1,14 @@
+package lms.model.exception;
+
+public class OverdrawnCreditException extends LMSException {
+
+	public OverdrawnCreditException() {
+		super("Default OverdrawnCreditException");
+	}
+	
+	public MultipleBorrowingException(String message) {
+		super(message);
+		
+	}
+
+}

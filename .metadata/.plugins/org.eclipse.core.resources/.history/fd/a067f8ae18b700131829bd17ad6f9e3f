@@ -1,0 +1,14 @@
+package lms.model.exception;
+
+public class HoldingExistException extends LMSException {
+
+	public HoldingExistException() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public HoldingExistException(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
+
+}

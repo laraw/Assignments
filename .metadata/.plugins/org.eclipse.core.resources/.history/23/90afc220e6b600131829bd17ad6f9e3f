@@ -1,0 +1,13 @@
+package lms.model;
+
+import java.util.ArrayList;
+
+public interface Member {
+	
+	public double calculateRemainingCredit();
+	
+	public ArrayList<Holding> getBorrowingHistory();
+	
+	
+
+}

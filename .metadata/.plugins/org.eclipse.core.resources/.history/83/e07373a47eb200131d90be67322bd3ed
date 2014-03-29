@@ -1,0 +1,106 @@
+package fleet.test;
+import fleet.model.Truck;
+import fleet.model.Van;
+import fleet.model.facade.FleetSystemEngine;
+import fleet.model.facade.FleetSystemModel;
+
+/**
+ * 
+ * Programming 2, Week 3, Fleet Management System Date: 17-03-2011
+ * 
+ * 
+ * <b> FleetTester </b> performs the following functionalities on the fleet
+ * management system.
+ * 
+ * - Add Vehicle (Vans + Trucks). - Display Information about a Vehicle(s). -
+ * Assign a vehicle to a job (tests cases in which a job should be accepted and
+ * a case where it should be refused) - Service a vehicle - Display Information
+ * about Job(s)
+ */
+public class FleetTester {
+
+	static FleetSystemModel testFleet = new FleetSystemEngine();
+
+	public static void main(String[] args) {
+		/*
+		 * Adding Vehicles
+		 */
+		testFleet.addVehicle(new Van("v1", "Toyota", "Sienna", 1998, 500.0));
+		testFleet.addVehicle(new Van("v2", "Volkswagen", "Routan S", 2009,
+				1000.0));
+
+		testFleet.addVehicle(new Truck("t1", "Peterbilt", "379 ", 1990, 2000.0,
+				3000));
+		testFleet.addVehicle(new Truck("t2", "Peterbilt", "386", 2005, 2000.0,
+				3500));
+
+		/*
+		 * Display Vehicle Information
+		 */
+		System.out.format("\n*Printing Information for Van : %s\n", "v2");
+		testFleet.displayVehicleInfo("v2");
+
+		System.out.format("\n*Printing Information for Truck : %s\n", "t2");
+		testFleet.displayVehicleInfo("t2");
+
+		/*
+		 * Display All Vehicles
+		 */
+		System.out.println("\n*Displaying All Vehicles...");
+		testFleet.displayAllVehicles();
+
+		/*
+		 * Schedule Jobs
+		 */
+		System.out.println("\n*Testing Job Scheduling for v2...");
+		System.out
+				.println("Job 100km to V2(should schedule) = "
+						+ (testFleet.scheduleJob(100, "v2") ? "scheduled"
+								: "rejected")); // should schedule
+		System.out
+				.println("Job 600km to V2(should schedule) = "
+						+ (testFleet.scheduleJob(600, "v2") ? "scheduled"
+								: "rejected")); // should schedule
+		System.out
+				.println("Job 500km to V2(should reject) = "
+						+ (testFleet.scheduleJob(500, "v2") ? "scheduled"
+								: "rejected")); // should reject
+		System.out
+				.println("Job 100km to V2(should schedule) = "
+						+ (testFleet.scheduleJob(100, "v2") ? "scheduled"
+								: "rejected")); // should schedule
+		System.out
+				.println("Job 300km to V2(should reject) = "
+						+ (testFleet.scheduleJob(300, "v2") ? "scheduled"
+								: "rejected")); // should reject
+
+		/*
+		 * Printing current Odometer reading and vehicle information for van v2
+		 */
+		System.out
+				.println("\n*Vehicle Inforamtion for v2(After Jobs Scheduled)...");
+		testFleet.displayVehicleInfo("v2");
+
+		/*
+		 * Servicing V2
+		 */
+		System.out.println("\n*Servicing Vehicle V2...");
+		testFleet.serviceVehicle("v2");
+		testFleet.displayVehicleInfo("v2");
+
+		/*
+		 * Test New Job Schedule
+		 */
+		System.out
+				.println("\n*Testing New Job Schedule 900km to V2 (should schedule)= "
+						+ (testFleet.scheduleJob(990, "v2") ? "scheduled"
+								: "rejected"));
+
+		/*
+		 * Printing All Jobs
+		 */
+		System.out.println("\n*Displaying All Scheduled Jobs");
+		testFleet.displayAllJobs();
+	}
+
+}

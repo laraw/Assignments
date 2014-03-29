@@ -1,0 +1,38 @@
+package lms.model;
+
+import java.util.Date;
+
+public class Book extends AbstractHolding {
+
+	private static final int MAX_LOAN_PERIOD = 28;
+	private static final double DEFAULT_LOAN_FEE = 10.00;
+	
+	
+	public Book() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Book(String code, String title, double lateFee, Date borrowDate) {
+		super(code, title, lateFee, borrowDate);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public double getDefaultLoanFee() {
+		// TODO Auto-generated method stub
+		return DEFAULT_LOAN_FEE;
+	}
+
+	@Override
+	public int getMaxLoanPeriod() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

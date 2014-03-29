@@ -1,0 +1,74 @@
+/**
+ * 
+ */
+package fleet.model.facade;
+
+import fleet.model.Job;
+import fleet.model.Vehicle;
+
+/**
+ * The {@code FleetSystemModel} provides a facade interface for accessing all
+ * public functionalities of the FleetSystem from external classes
+ */
+public interface FleetSystemModel {
+
+	/**
+	 * Add a vehicle to the fleet
+	 * 
+	 * @param v
+	 */
+	public void addVehicle(Vehicle v);
+
+	/**
+	 * Display All Scheduled Jobs in the fleet
+	 */
+	public void displayAllJobs();
+
+	/**
+	 * Display All Vehicles in the fleet
+	 */
+	public void displayAllVehicles();
+
+	/**
+	 * Display details of a specified job
+	 * 
+	 * @param jobID
+	 */
+	public void displayJobInfo(String jobID);
+
+	/**
+	 * Display details of a specified vehicle
+	 * 
+	 * @param regNo
+	 */
+	public void displayVehicleInfo(String regNo);
+
+	/**
+	 * @param jobID
+	 * @return Job associated with the specified jobID
+	 */
+	public Job getJob(String jobID);
+
+	/**
+	 * Service the vehicle corresponding to the specified registrationNo
+	 * 
+	 * @param regNo
+	 */
+	public void serviceVehicle(String regNo);
+
+	/**
+	 * @param regNo
+	 * @return Vehicle associated with the specified regNo
+	 */
+	public Vehicle getVehicle(String regNo);
+
+	/**
+	 * Creates a job and schedules it to the specified vehicle if traveling the
+	 * required distance does not violate the vehicle's maintenance requirements
+	 * 
+	 * @param distance
+	 * @param regNo
+	 * @return
+	 */
+	public boolean scheduleJob(double distance, String regNo);
+}

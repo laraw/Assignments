@@ -1,0 +1,16 @@
+package lms.model;
+
+public class PremiumMember extends AbstractMember {
+
+	public PremiumMember() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public void returnHolding() {
+		
+	}
+	
+	public String toString() {
+		return "";
+	}
+}

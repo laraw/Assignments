@@ -1,0 +1,14 @@
+package TuteLab2;
+
+public class AudioPlayerUnit {
+	
+	private AudioDisc[] audiodiscs;
+	
+	
+	public AudioPlayerUnit() {
+		
+	}
+	
+	
+
+}

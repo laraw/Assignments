@@ -1,0 +1,14 @@
+package lms.model.exception;
+
+public class InsufficientCreditException extends LMSException {
+
+	public InsufficientCreditException() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public InsufficientCreditException(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
+
+}

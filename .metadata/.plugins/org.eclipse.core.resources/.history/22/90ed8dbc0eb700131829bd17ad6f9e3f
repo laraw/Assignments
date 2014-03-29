@@ -1,0 +1,9 @@
+package lms.model.exception;
+
+public class OverdrawnCreditException {
+
+	public OverdrawnCreditException() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

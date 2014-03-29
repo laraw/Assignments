@@ -1,0 +1,19 @@
+package fleet.model;
+
+public abstract class Vehicle {
+
+	private String regno;
+	private String makeyear;
+	private String model;
+	private int odo;
+	private int lastodo;
+	private int serviceinterval;
+	
+	public Vehicle() {
+		
+	}
+	
+	rublic Vehicle(int serviceinterval) {
+		this.serviceinterval = serviceinterval;
+	}
+}

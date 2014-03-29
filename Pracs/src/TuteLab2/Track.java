@@ -1,0 +1,27 @@
+package TuteLab2;
+
+public class Track {
+	private String title;
+	private String artist;
+	private float length;
+	
+	
+	public Track(String title, String artist, float length) {
+		this.title = title;
+		this.artist = artist;
+		this.length = length;
+	}
+	
+	public float getLen(){
+		return length;
+	}
+	
+	public void play() {
+		System.out.println("Now playing: " + title + " by the " + artist);
+	}
+	
+	public void stop() {
+		System.out.println("Stopped: " + title + " by the " + artist );
+	}
+
+}

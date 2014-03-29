@@ -1,0 +1,11 @@
+package lms.model;
+
+import java.util.ArrayList;
+
+public class LibraryCollection {
+
+	public LibraryCollection() {
+		private ArrayList<Holding> holdings;
+	}
+
+}

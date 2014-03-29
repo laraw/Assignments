@@ -1,0 +1,18 @@
+package TuteLab2;
+
+import java.util.ArrayList;
+
+public class AudioPlayerUnit {
+	
+	private int currentCD;
+	private ArrayList<CD> cds;
+	
+	
+	public AudioPlayerUnit() {
+		private ArrayList<Track> cds = new ArrayList<>();
+		currentCD = 0;
+	}
+
+	
+	
+}

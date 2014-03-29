@@ -1,0 +1,19 @@
+package lms.model.facade;
+
+import lms.model.util.DateUtil;
+
+/**
+ * @author Mikhail Perepletchikov
+ */
+public class LMSFacade implements LMSModel {
+
+	/* you need to implement all LMSModel functions here */
+	
+	public LMSFacade() {
+		
+	}
+	// this shows an example of using the provided DateUtil class to set the current date
+	public void setDate(String currentDate) {
+		DateUtil.getInstance().setDate(currentDate);
+	}
+}

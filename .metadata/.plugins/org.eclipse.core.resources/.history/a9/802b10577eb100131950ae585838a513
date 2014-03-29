@@ -1,0 +1,21 @@
+package fleet.model;
+
+public class Van extends Vehicle {
+
+	public Van() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Van(String regno, String makeyear, String model, int odo,
+			int serviceinterval, int km) {
+		super(regno, makeyear, model, odo, serviceinterval, km);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public double calcWear() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

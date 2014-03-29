@@ -1,0 +1,70 @@
+package lms.model;
+
+import java.util.ArrayList;
+
+public class Library {
+	
+	private LibraryCollection collection;
+	private Member member;
+	
+	
+	public Library() {
+		
+	}
+	
+	public void addCollection(LibraryCollection collection){
+		this.collection = collection;
+	}
+	
+	public void addHolding(Holding holding) {
+		collection.addHolding(holding);
+	}
+	
+	public void addMember(String memberId, String name) {
+		
+	}
+	
+	public void borrowHolding() {
+		
+	}
+	
+	public double calculateRemainingCredit() {
+		return 0;
+	}
+	
+	public double calculateTotalLateFees() {
+		return 0;
+	}
+	
+	public ArrayList<Holding> getAllHoldings () { 
+		ArrayList<Holding> holdings = new ArrayList<Holding>();
+		return holdings;
+	}
+	
+	public void getBorrowedHoldings () {
+	
+	}
+	
+	public void getCollection() {
+		
+	}
+	
+	public void getHistoryRecord() {
+		
+	}
+	
+	public void getHolding() {
+		
+	}
+	
+	public void getMember() {
+		
+	}
+	
+	public void removeHolding () {
+
+}
+	
+	
+	
+	

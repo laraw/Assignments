@@ -1,0 +1,35 @@
+package lms.model;
+
+public class PremiumMember extends AbstractMember {
+
+	private static final double MAX_CREDIT = 45.00;
+			
+	public PremiumMember() {
+		
+	}
+
+	public PremiumMember(String premiumMemberId, String premiumMemberName) {
+		super(premiumMemberId, premiumMemberName);
+	}
+
+	public boolean borrowHolding(Holding holding)  {
+		holding.getDefaultLoanFee();
+		holding.setBorrowDate(Date );
+	};
+	
+	public double calculateRemainingCredit();
+	
+	public double getMaxCredit() {
+		return MAX_CREDIT;
+	};
+
+	public void resetCredit();
+	
+	public void returnHolding() {
+		
+	}
+	
+	public String toString() {
+		return "";
+	}
+}

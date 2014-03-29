@@ -1,0 +1,9 @@
+package TuteLab2;
+
+public class Cassette {
+
+	public Cassette() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

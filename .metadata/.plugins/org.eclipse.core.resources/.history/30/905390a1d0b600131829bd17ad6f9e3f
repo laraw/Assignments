@@ -1,0 +1,32 @@
+package lms.model;
+
+public class Video extends AbstractHolding {
+
+	public Video() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Video(String code, String title) {
+		super(code, title);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public double getDefaultLoanFee() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getMaxLoanPeriod() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

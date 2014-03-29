@@ -1,0 +1,13 @@
+package lms.model;
+
+public class BorrowingHistory {
+
+	private ArrayList<HistoryRecord> records;
+	
+	public BorrowingHistory() {
+		
+	}
+	
+	
+
+}

@@ -1,0 +1,27 @@
+package lms.model;
+
+public class HistoryRecord {
+
+	private int recordID;
+	private Holding holding;
+	private double feepaid;
+	
+	public HistoryRecord(int recordID; Holding holding) {
+		this.holding = holding;
+		feepaid = holding.calculateLateFee() + holding.getDefaultLoanFee();
+	}
+	
+	public Holding getHolding() {
+		return holding;
+	}
+	
+	public double getFeePayed() {
+		return feepaid; 
+	}
+	
+	public String toString() {
+		return holding.getCode()+":" + feepaid;
+	}
+	
+
+}

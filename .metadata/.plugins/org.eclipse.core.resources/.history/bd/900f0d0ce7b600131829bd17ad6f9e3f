@@ -1,0 +1,21 @@
+package lms.model;
+
+import java.util.ArrayList;
+
+public interface Member {
+	
+	public double calculateRemainingCredit();
+	
+	public Holding[] getBorrowingHistory();
+	
+	public ArrayList<Holding> getCurrentHoldings();
+	
+	public String getFullName();
+	
+	public double getMaxCredit();
+	
+	public String getMemberId();
+	
+	public void resetCredit();
+
+}

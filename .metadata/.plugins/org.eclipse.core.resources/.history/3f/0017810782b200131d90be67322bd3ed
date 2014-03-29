@@ -1,0 +1,45 @@
+package fleet.model.facade;
+
+import java.util.ArrayList;
+
+import fleet.model.Vehicle;
+
+public class FleetSystemEngine implements FleetSystemModel {
+
+	ArrayList<Vehicle> fleets = new ArrayList<Vehicle>();
+	
+	public FleetSystemEngine() {
+		
+	}
+
+	@Override
+	public void addVehicle(Vehicle vcl) {
+		
+
+	}
+
+	@Override
+	public void displayVehicleInfo(Vehicle vcl) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void displayAllVehicles() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void scheduleJob(Vehicle vcl) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void serviceVehicle(Vehicle vcl) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

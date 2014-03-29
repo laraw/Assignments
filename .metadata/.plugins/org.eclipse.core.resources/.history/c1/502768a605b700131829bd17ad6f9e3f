@@ -1,0 +1,17 @@
+package lms.model;
+
+public class Library {
+	
+	private LibraryCollection collection;
+	
+	public Library() {
+		
+	}
+	
+	public void addCollection(LibraryCollection collection){
+		this.collection = collection;
+	}
+	
+	
+
+}

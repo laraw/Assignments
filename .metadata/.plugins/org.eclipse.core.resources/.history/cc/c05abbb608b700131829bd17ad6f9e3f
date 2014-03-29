@@ -1,0 +1,34 @@
+package lms.model;
+
+import java.util.ArrayList;
+
+public class BorrowingHistory {
+
+	private ArrayList<HistoryRecord> records = new ArrayList<HistoryRecord>();
+	
+	public BorrowingHistory() {
+		
+	}
+	
+	public void addHistoryRecord(HistoryRecord record) {
+		records.add(record);
+	}
+	
+	public double calculateTotalLateFees() {
+		
+		double totallatefees;
+		
+		for (int i = 0; i <= records.size(); i++) {
+			 totallatefees = totallatefees + records.get(i).getFeePaid();
+			 
+			 		
+		}
+		
+		return totallatefees;
+	}
+	
+	
+	
+	
+
+}

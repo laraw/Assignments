@@ -1,0 +1,30 @@
+package lms.model;
+
+public class StandardMember extends AbstractMember {
+
+	private static final double MAX_CREDIT = 30.00;
+	
+	public StandardMember() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public  boolean borrowHolding();
+	
+	public  double calculateRemainingCredit();
+	
+	public  double getMaxCredit();
+
+	public  void resetCredit();
+	
+	public void returnHolding() {
+		
+	}
+	
+	public String toString() {
+		return "";
+	}
+	
+	
+
+}

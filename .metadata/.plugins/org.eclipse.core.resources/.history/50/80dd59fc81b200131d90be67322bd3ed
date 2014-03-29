@@ -1,0 +1,71 @@
+package fleet.model;
+
+/**
+ * 
+ * Programming 2, Week 3, Fleet Management System Date: 05-08-2010
+ * 
+ * <b> MaintenanceInfo </b>
+ */
+public class MaintenanceInfo {
+
+	private double lastServicePoint = 0.0;
+
+	private final double SERVICE_INTERVAL;
+
+	private AbstractVehicle vehicle;
+
+	/**
+	 * @param vehicle
+	 * @param serviceInterval
+	 */
+	public MaintenanceInfo(AbstractVehicle vehicle, double serviceInterval) {
+		SERVICE_INTERVAL = serviceInterval;
+		this.vehicle = vehicle;
+	}
+
+	/**
+	 * @return the odometer reading at which the vehicle was serviced last
+	 */
+	public double getLastServicePoint() {
+		return lastServicePoint;
+	}
+
+	/**
+	 * @return the odometer reading at which the vehicle should be serviced next
+	 */
+	public double getNextServicePoint() {
+		return lastServicePoint + SERVICE_INTERVAL;
+	}
+
+	public double getServiceInterval() {
+		return SERVICE_INTERVAL;
+	}
+
+	/**
+	 * @return
+	 */
+	public AbstractVehicle getVehicle() {
+		return vehicle;
+	}
+
+	/**
+	 * Service a Vehicle by setting its lastServicePoint to the current Odometer
+	 * reading
+	 */
+	public void service() {
+		lastServicePoint = vehicle.getOdometer();
+	}
+
+	public String toString() {
+		return String.format("Last_Service_Point: %s, Service_Interval: %s",
+				lastServicePoint, SERVICE_INTERVAL);
+	}
+
+	/**
+	 * @param distToTravel
+	 * @return
+	 */
+	public boolean wouldExceedServicePoint(double distToTravel) {
+		return (vehicle.getOdometer() + distToTravel) > getNextServicePoint();
+	}
+}

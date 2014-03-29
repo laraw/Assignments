@@ -1,0 +1,9 @@
+package TuteLab2;
+
+public class Track {
+
+	public Track() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

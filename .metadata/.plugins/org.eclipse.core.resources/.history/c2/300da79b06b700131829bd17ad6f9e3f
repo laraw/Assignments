@@ -1,0 +1,14 @@
+package lms.model;
+
+public class HistoryRecord {
+
+	private Holding holding;
+	private double feepaid;
+	
+	public HistoryRecord(Holding holding, double feepaid) {
+		this.holding = holding;
+		this.feepaid = feepaid;
+	}
+	
+
+}

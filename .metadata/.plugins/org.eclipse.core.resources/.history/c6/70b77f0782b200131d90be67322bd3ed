@@ -1,0 +1,26 @@
+package fleet.model;
+
+public class Van extends Vehicle {
+
+	
+	public Van() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Van(String regno, String makeyear, String model, int odo,
+			int serviceinterval, int km) {
+		super(regno, model, makeyear, odo, serviceinterval, km);
+		// TODO Auto-generated constructor stub
+	}
+	
+	"v1", "Toyota", "Sienna", 1998, 500.0
+	
+	@Override
+	public double calcWear() {
+		// TODO Auto-generated method stub
+		return 0.60 * super.getKM();
+	}
+
+	
+	
+}

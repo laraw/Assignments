@@ -1,0 +1,11 @@
+package TuteLab2;
+
+public class AudioDisc {
+	
+	private int DiscSize;
+	
+	public AudioDisc() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

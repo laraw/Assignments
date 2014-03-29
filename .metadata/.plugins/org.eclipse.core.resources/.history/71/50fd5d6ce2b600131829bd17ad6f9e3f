@@ -1,0 +1,27 @@
+package lms.model;
+
+import java.util.Date;
+
+// The holding interface provides a list of method signatures that must be implemented by the Holding superclass
+
+public interface Holding {
+	
+	public java.util.Date getBorrowDate();
+	
+	public int getCode();
+	
+	public double getDefaultLoanFee();
+	
+	public int getMaxLoanPeriod();
+	
+	public String getTitle();
+	
+	public boolean isOnLoan();
+	
+	public void setBorrowDate(Date borrowDate);
+	
+	public String toString();
+	
+	public double calculateLateFee();
+	
+}

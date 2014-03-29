@@ -1,0 +1,26 @@
+package TuteLab2;
+
+import java.util.ArrayList;
+
+public class CD {
+	private String title;
+	private String artist;
+	private ArrayList<Track> tracks;
+	
+	
+	public CD() {
+		
+		
+	}
+	
+	public CD (String title, String artist) {
+		this.title = title;
+		this.artist = artist;
+	}
+	
+	public void addTrack(Track newtrack) (
+			
+	)
+	
+
+}

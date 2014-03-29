@@ -1,0 +1,113 @@
+/**
+ * 
+ */
+package fleet.model.facade;
+
+import fleet.model.Fleet;
+import fleet.model.Job;
+import fleet.model.Vehicle;
+
+/**
+ * The {@code FleetSystemModel} provides a facade implementation for accessing
+ * all public functionalities of the FleetSystem from external classes
+ */
+public class FleetSystemEngine implements FleetSystemModel {
+
+	private Fleet fleet;
+
+	public FleetSystemEngine() {
+		fleet = new Fleet();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see fleet.model.facade.FleetSystemModel#addVehicle(fleet.model.Vehicle)
+	 */
+	@Override
+	public void addVehicle(Vehicle v) {
+		fleet.addVehicle(v);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see fleet.model.facade.FleetSystemModel#displayAllJobs()
+	 */
+	@Override
+	public void displayAllJobs() {
+		fleet.displayAllJobs();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see fleet.model.facade.FleetSystemModel#displayAllVehicles()
+	 */
+	@Override
+	public void displayAllVehicles() {
+		fleet.displayAllVehicles();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see fleet.model.facade.FleetSystemModel#displayJobInfo(java.lang.String)
+	 */
+	@Override
+	public void displayJobInfo(String jobID) {
+		fleet.displayJobInfo(jobID);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see fleet.model.facade.FleetSystemModel#displayVehicleInfo(java.lang.String)
+	 */
+	@Override
+	public void displayVehicleInfo(String regNo) {
+		fleet.displayVehicleInfo(regNo);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see fleet.model.facade.FleetSystemModel#getJob(java.lang.String)
+	 */
+	@Override
+	public Job getJob(String jobID) {
+		return fleet.getJob(jobID);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see fleet.model.facade.FleetSystemModel#serviceVehicle(java.lang.String)
+	 */
+	@Override
+	public void serviceVehicle(String regNo) {
+		fleet.serviceVehicle(regNo);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see fleet.model.facade.FleetSystemModel#getVehicle(java.lang.String)
+	 */
+	@Override
+	public Vehicle getVehicle(String regNo) {
+		return fleet.getVehicle(regNo);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see fleet.model.facade.FleetSystemModel#scheduleJob(double,
+	 *      java.lang.String)
+	 */
+	@Override
+	public boolean scheduleJob(double distance, String regNo) {
+		return fleet.scheduleJob(distance, regNo);
+	}
+
+}

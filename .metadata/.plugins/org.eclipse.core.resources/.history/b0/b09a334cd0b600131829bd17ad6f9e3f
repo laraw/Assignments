@@ -1,0 +1,61 @@
+package lms.model;
+
+import java.util.Date;
+
+public abstract class AbstractHolding implements Holding {
+
+	private String code;
+	private String title;
+	private double lateFee;
+	private Date borrowDate;
+	
+	public AbstractHolding() {
+		// Empty constructor 
+	}
+	
+	public AbstractHolding(String code, String title,double lateFee,Date borrowDate) {
+		this.code = code;
+		this.title = title;
+		this.lateFee = lateFee;
+		this.borrowDate = borrowDate; 
+	}
+
+	@Override
+	public Date getBorrowDate() {
+		// Comment
+		return borrowDate;
+	}
+
+	@Override
+	public String getCode() {
+		//
+		return code;
+	}
+
+	@Override
+	public abstract double getDefaultLoanFee();
+
+	@Override
+	public abstract int getMaxLoanPeriod();
+
+	@Override
+	public String getTitle() {
+		// TODO Auto-generated method stub
+		return title;
+	}
+
+	@Override
+	public boolean isOnLoan() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setBorrowDate(Date borrowDate) {
+		this.borrowDate = borrowDate;
+
+	}
+	
+	public abstract String toString();
+
+}

@@ -1,0 +1,14 @@
+package lms.model.exception;
+
+public class HoldingOnLoanException extends LMSException {
+
+	public HoldingOnLoanException() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public HoldingOnLoanException(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,80 @@
+package fleet.model;
+
+public abstract class Vehicle {
+
+	private String regno;
+	private String makeyear;
+	private String model;
+	private int odo;
+	private int lastodo;
+	private int serviceinterval;
+	private java.util.Date lastService;
+	private int km;
+	
+	public Vehicle() {
+		
+	}
+	
+		
+	public Vehicle(String regno, String makeyear, String model, int odo, int serviceinterval, int km) {
+		this.regno = regno;
+		this.makeyear = makeyear;
+		this.model= model;
+		this.odo = odo;
+		lastodo = odo;
+		this.serviceinterval = serviceinterval;
+		this.km = km;
+	}
+	
+	public int getOdo () {
+		return odo;
+	}
+	
+	public int getlastOdo() {
+		return lastodo;
+	}
+	
+	public int getServiceInterval() {
+		return serviceinterval;
+	}
+	
+	public String getreg() {
+		return regno;
+	}
+	
+	public String getmake() {
+		return makeyear;
+	}
+	
+	public String getmodel() {
+		return model;
+	}
+	
+	
+	
+	public abstract double calcWear();
+
+	public void setKM(int km) {
+		this.km = km;
+	}
+	
+	public int getKM () {
+		return km;
+	}
+	
+	public int getNextService () {
+		int nextServiceDue = lastodo + serviceinterval;
+		
+		if (nextServiceDue > odo) {
+			return nextServiceDue - odo;
+		}
+		else  {
+			return 0;
+		}
+	}
+	
+	public void serviceVehicle () {
+		serviceinterval = odo;
+	}
+	
+	

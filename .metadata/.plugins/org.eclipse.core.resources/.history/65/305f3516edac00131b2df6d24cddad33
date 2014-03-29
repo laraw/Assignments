@@ -1,0 +1,11 @@
+package TuteLab2;
+
+public class CD {
+
+	public CD() {
+		private String title;
+		private String artist;
+		
+	}
+
+}

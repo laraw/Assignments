@@ -1,0 +1,13 @@
+package fleet.model.facade;
+import fleet.model.*;
+
+
+public interface FleetSystemModel {
+
+	
+	public void addVehicle();
+	public void displayVehicleInfo();
+	public void displayAllVehicles();
+	public void scheduleJob();
+	public void serviceVehicle();
+}

@@ -1,0 +1,9 @@
+package TuteLab2;
+
+public class AudioPlayerUnit {
+
+	public AudioPlayerUnit() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

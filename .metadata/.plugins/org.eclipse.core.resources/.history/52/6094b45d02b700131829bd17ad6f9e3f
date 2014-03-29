@@ -1,0 +1,39 @@
+package lms.model;
+
+import java.util.ArrayList;
+
+public class LibraryCollection {
+
+	private ArrayList<Holding> holdings;
+	
+	
+	public LibraryCollection() {
+		
+	}
+	
+	public void addHolding(Holding holding) {
+		holdings.add(holding);
+	}
+	
+	public ArrayList<Holding> getAllHoldings() {
+		return holdings;
+	}
+	
+	public Holding getHolding(int code) {
+		return holdings.get(code);
+	}
+	
+	public boolean removeHolding(int code) {
+		boolean isonloan=false;
+		if(holdings.get(code).isOnLoan()) {
+			return false;
+		}
+		else holdings.remove(code);
+			return true;
+	}
+	
+	public String toString() {
+		
+	}
+
+}

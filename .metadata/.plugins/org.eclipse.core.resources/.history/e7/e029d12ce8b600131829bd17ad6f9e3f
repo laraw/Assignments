@@ -1,0 +1,17 @@
+package lms.model;
+
+public class StandardMember extends AbstractMember {
+
+	public StandardMember() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void returnHoldng(){
+		
+	}
+	
+	public String toString() {
+		
+	}
+
+}

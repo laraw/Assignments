@@ -1,0 +1,20 @@
+package TuteLab3;
+
+public class Lecture {
+
+	public Lecture() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static void main(String[] args) {
+		Double newdub = new Double(2.00);
+		double newdub2 = newdub.doubleValue();
+		System.out.print(newdub2);
+		
+		newdub = Double.MAX_VALUE;;
+		
+		newdub2 = newdub;
+		System.out.print(newdub2);
+	}
+
+}

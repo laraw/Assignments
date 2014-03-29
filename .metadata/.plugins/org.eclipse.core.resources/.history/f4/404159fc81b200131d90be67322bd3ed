@@ -1,0 +1,56 @@
+package fleet.model;
+
+/**
+ * 
+ * Programming 2, Week 3, Fleet Management System Date: 05-08-2010
+ * 
+ * <b> Job </b>
+ */
+public class Job {
+
+	private double cost;
+	private double distance;
+	private String jobID;
+	private Vehicle vehicle;
+
+	/**
+	 * @param jobID
+	 * @param distance
+	 * @param vehicle
+	 * @param cost
+	 */
+	public Job(String jobID, double distance, Vehicle vehicle, double cost) {
+		this.jobID = jobID;
+		this.distance = distance;
+		this.vehicle = vehicle;
+		this.cost = cost;
+	}
+
+	/**
+	 * @return Wear and Tear of the Vehicle performing this Job
+	 */
+	public double getCost() {
+		return cost;
+	}
+
+	/**
+	 * @return Job ID
+	 */
+	public Object getID() {
+		// TODO Auto-generated method stub
+		return jobID;
+	}
+
+	/**
+	 * @return Vehicle assigned to this Job
+	 */
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+
+	public String toString() {
+		return String.format(
+				"JobID: %s , Distance: %s, Cost: %s, (Vehicle : %s)", jobID,
+				distance, cost, vehicle.getRegNo());
+	}
+}

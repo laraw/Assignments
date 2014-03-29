@@ -1,0 +1,43 @@
+package fleet.model;
+
+/**
+ * 
+ * Programming 2, Week 3, Fleet Management System Date: 05-08-2010
+ * 
+ * <b> Van </b>
+ */
+public class Van extends AbstractVehicle {
+
+	public static final double WEAR_AND_TEAR_RATE = .6;
+
+	/**
+	 * @param regNo
+	 * @param make
+	 * @param model
+	 * @param year
+	 * @param serviceInterval
+	 */
+	public Van(String regNo, String make, String model, int year,
+			double serviceInterval) {
+		super(regNo, make, model, year, serviceInterval);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see Vehicle#calculateWearAndTear(double)
+	 */
+	public double calculateWearAndTear(double distance) {
+		return WEAR_AND_TEAR_RATE * distance;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see Vehicle#toString()
+	 */
+	public String toString() {
+		return "Type: Van, " + super.toString();
+	}
+
+}

@@ -1,0 +1,28 @@
+package TuteLab2;
+
+public class AudioDisc {
+	
+	private int DiscSize;
+	private String discName;
+	private int numTracks;
+	
+	
+	
+	public AudioDisc() {
+		
+	}
+	
+	public AudioDisc(int DiscSize, String discName) {
+		this.DiscSize = DiscSize;
+		this.discName = discName;
+	}
+	
+	public AudioDisc(int DiscSize, String discName, int numTracks){
+		this.AudioDisc(DiscSize, discName);
+		
+		
+	}
+	
+	
+
+}

@@ -1,0 +1,28 @@
+{
+  "C:\\Program Files\\Java\\jre7\\lib\\rt.jar": {
+    "coordinate": "jre:jre:zip:call:1.0.0",
+    "location": "C:\\Program Files\\Java\\jre7\\lib\\rt.jar",
+    "status": "RESOLVED",
+    "error": "No class path info available for \u0027C:\\Program Files\\Java\\jre7\\lib\\rt.jar\u0027. Skipped."
+  },
+  "C:\\Users\\Lara\\workspace\\ConnectMySQL\\src": {
+    "location": "C:\\Users\\Lara\\workspace\\ConnectMySQL\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\Lara\\workspace\\ConnectMySQL\\src\u0027. Skipped."
+  },
+  "C:\\Users\\Lara\\workspace\\WorkingwithMySQL\\src": {
+    "location": "C:\\Users\\Lara\\workspace\\WorkingwithMySQL\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\Lara\\workspace\\WorkingwithMySQL\\src\u0027. Skipped."
+  },
+  "C:\\Users\\Lara\\Documents\\workspace\\Pracs\\src": {
+    "location": "C:\\Users\\Lara\\Documents\\workspace\\Pracs\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\Lara\\Documents\\workspace\\Pracs\\src\u0027. Skipped."
+  },
+  "C:\\Users\\Lara\\Documents\\workspace\\Assignment1\\src": {
+    "location": "C:\\Users\\Lara\\Documents\\workspace\\Assignment1\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\Lara\\Documents\\workspace\\Assignment1\\src\u0027. Skipped."
+  }
+}

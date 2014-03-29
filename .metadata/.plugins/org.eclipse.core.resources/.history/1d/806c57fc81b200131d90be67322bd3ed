@@ -1,0 +1,127 @@
+package fleet.model;
+
+/**
+ * 
+ * Programming 2, Week 3, Fleet Management System Date: 05-08-2010
+ * 
+ * <b> AbstractVehicle </b>
+ */
+public abstract class AbstractVehicle implements Vehicle {
+
+	private String make;
+	private String model;
+	private double odometer = 0.0;
+	private String regNo;
+	private int year;
+
+	private MaintenanceInfo mInfo;
+
+	/**
+	 * @param regNo
+	 * @param make
+	 * @param model
+	 * @param year
+	 * @param serviceInterval
+	 */
+	public AbstractVehicle(String regNo, String make, String model, int year,
+			double serviceInterval) {
+		this.regNo = regNo;
+		this.make = make;
+		this.model = model;
+		this.year = year;
+
+		mInfo = new MaintenanceInfo(this, serviceInterval);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see fleet.model.Vehicle#calculateWearAndTear(double)
+	 */
+	public abstract double calculateWearAndTear(double distance);
+
+	/**
+	 * determines whether a vehicle can travel a specified distance without
+	 * exceeding its next service point
+	 * 
+	 * @param distance
+	 * @see MaintenanceInfo#wouldExceedServicePoint(double)
+	 * @return
+	 */
+	public boolean canTravel(double distance) {
+		return !mInfo.wouldExceedServicePoint(distance);
+	}
+
+	/**
+	 * @return make
+	 */
+	public String getMake() {
+		return make;
+	}
+
+	/**
+	 * @return model
+	 */
+	public String getModel() {
+		return model;
+	}
+
+	/**
+	 * @return current odometer reading
+	 */
+	public double getOdometer() {
+		return odometer;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see fleet.model.Vehicle#getRegNo()
+	 */
+	public String getRegNo() {
+		return regNo;
+	}
+
+	/**
+	 * @return
+	 */
+	public int getYear() {
+		return year;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see fleet.model.Vehicle#service()
+	 */
+	public void service() {
+		mInfo.service();
+	}
+
+	/*
+	 * Returns a formatted String describing the Vehicle
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return String
+				.format(
+						"Reg_Number: %s, Make: %s, Model: %s, Year:%s, Current_Odometer:%skm, %s",
+						regNo, make, model, year, odometer, mInfo);
+	}
+
+	/**
+	 * Increments the odometer reading by the specified distance hence
+	 * simulating the vehicle traveling.
+	 * 
+	 * @param distance
+	 * @return
+	 */
+	public double travel(double distance) {
+		double wearAndTear = calculateWearAndTear(distance);
+		odometer += distance;
+
+		return wearAndTear;
+	}
+
+}

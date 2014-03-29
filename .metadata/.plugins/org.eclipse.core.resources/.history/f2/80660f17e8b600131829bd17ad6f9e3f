@@ -1,0 +1,9 @@
+package lms.model;
+
+public class PremiumMember extends AbstractMember {
+
+	public PremiumMember() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

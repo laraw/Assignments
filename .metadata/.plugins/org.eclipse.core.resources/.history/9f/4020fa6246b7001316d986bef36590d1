@@ -1,0 +1,72 @@
+package lms.model;
+
+import java.util.ArrayList;
+
+public class LibraryCollection {
+	
+	private int code;
+	private String name;
+	private ArrayList<Holding> holdings = new ArrayList<Holding>();
+	
+		
+	
+	public LibraryCollection(String collectionCode, String name) {
+		this.code = collectionCode;
+		this.name = name;
+	}
+	
+	// needs work... - may need to throw exception
+	public boolean addHolding(Holding holding) {
+		
+		boolean holdingexist = false;
+		for (int i = 0; i <= holdings.size(); i++) {
+			if (holdings.get(i).getCode() == holding.getCode()) {
+				// throw exception here
+				holdingexist = true;
+				
+			}
+		}
+		
+		if (!holdingexist) {
+			
+			holdings.add(holding);
+		}
+		
+		return holdingexist;
+		
+	}
+	
+	public ArrayList<Holding> getAllHoldings() {
+		return holdings;
+	}
+	
+	public Holding getHolding(int code) {
+		return holdings.get(code);
+	}
+	
+	public boolean removeHolding(int code) {
+		boolean isonloan=false;
+		if(holdings.get(code).isOnLoan()) {
+			isonloan = true;
+		}
+		else {
+			holdings.remove(code);
+			isonloan = false;
+		}
+		
+		return isonloan;
+			
+	}
+	
+	public String toString() {
+		String holdinglist = "";
+		
+		for (int i = 0; i<= holdings.size(); i++) {
+			holdinglist = holdinglist + holdings.get(i).getCode();
+		}
+		
+		return code+":"+name+":"+holdinglist;
+		
+	}
+
+}

@@ -1,0 +1,11 @@
+package lms.model;
+
+public interface Member {
+	
+	public double calculateRemainingCredit();
+	
+	public Holding[] getBorrowingHistory();
+	
+	
+
+}

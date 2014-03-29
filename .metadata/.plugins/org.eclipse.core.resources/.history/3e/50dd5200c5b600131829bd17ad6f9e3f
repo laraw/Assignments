@@ -1,0 +1,12 @@
+package lms.model;
+
+public interface Holding {
+	public java.util.Date getBorrowDate();
+	public String getCode();
+	public double getDefaultLoanFee();
+	public int getMaxLoanPeriod();
+	public String getTitle();
+	public boolean isOnLoan();
+	public void setBorrowDate();
+	public String toString();
+}

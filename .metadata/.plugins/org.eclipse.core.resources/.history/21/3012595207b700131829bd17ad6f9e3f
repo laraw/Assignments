@@ -1,0 +1,10 @@
+package lms.model;
+
+public class BorrowingHistory {
+
+	private HistoryRecord[] records;
+	public BorrowingHistory() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

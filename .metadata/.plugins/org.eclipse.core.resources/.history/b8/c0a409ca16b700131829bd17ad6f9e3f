@@ -1,0 +1,51 @@
+package lms.model;
+
+import java.util.Date;
+
+import lms.model.exception.InsufficientCreditException;
+
+public class PremiumMember extends AbstractMember {
+
+	private static final double MAX_CREDIT = 45.00;
+			
+	public PremiumMember() {
+		
+	}
+
+	public PremiumMember(String premiumMemberId, String premiumMemberName) {
+		super(premiumMemberId, premiumMemberName);
+	}
+
+	public boolean borrowHolding(Holding holding)  {
+		if (this.calculateRemainingCredit() < holding.getDefaultLoanFee()) {
+			throw new InsufficientCreditException("Member does not have sufficient credit");
+			return false;
+		}
+		else {
+			Date currentdate = new Date();
+			holding.setBorrowDate(currentdate);
+			return true;
+		}
+		
+	};
+	
+	public double calculateRemainingCredit() {
+		
+	};
+	
+	public double getMaxCredit() {
+		return MAX_CREDIT;
+	};
+
+	public void resetCredit() {
+		
+	};
+	
+	public void returnHolding() {
+		
+	}
+	
+	public String toString() {
+		return "";
+	}
+}

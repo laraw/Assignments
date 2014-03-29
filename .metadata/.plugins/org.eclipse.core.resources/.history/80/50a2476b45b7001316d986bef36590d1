@@ -1,0 +1,27 @@
+package lms.model;
+
+public class Library {
+	
+	private LibraryCollection collection;
+	private Member member;
+	
+	
+	public Library() {
+		
+	}
+	
+	public void addCollection(LibraryCollection collection){
+		this.collection = collection;
+	}
+	
+	public void addHolding(Holding holding) {
+		collection.addHolding(holding);
+	}
+	
+	public void addMember(String memberId, String name) {
+		Member newmember = new Member(memberID, name);Sd
+	}
+	
+	
+
+}

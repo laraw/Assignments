@@ -1,0 +1,32 @@
+package fleet.model;
+
+public interface Vehicle {
+
+	public double calculateWearAndTear(double distance);
+
+	/**
+	 * @return registration number
+	 */
+	public String getRegNo();
+
+	/**
+	 * Service a vehicle by setting the current odometer reading to the last
+	 * service point
+	 * 
+	 * @see MaintenanceInfo#service(double)
+	 */
+	public void service();
+
+	/**
+	 * determines whether a vehicle can travel a specified distance without
+	 * exceeding its next service point
+	 * 
+	 * @param distance
+	 * @see MaintenanceInfo#wouldExceedServicePoint(double, double)
+	 * @return
+	 */
+	public boolean canTravel(double distance);
+
+	public double travel(double distance);
+
+}

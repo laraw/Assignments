@@ -1,0 +1,77 @@
+package lms.model;
+
+import java.util.ArrayList;
+
+public abstract class AbstractMember implements Member {
+
+	private String memberID;
+	private String fullname;
+	private BorrowingHistory history;
+	private ArrayList<Holding> currentholdings = new ArrayList<Holding>();
+	private ArrayList<BorrowingHistory> memberhistory = new ArrayList<BorrowingHistory>();
+	
+	public AbstractMember() {
+	}
+	
+	public AbstractMember(String memberID, String fullname) {
+		this.memberID = memberID;
+		this.fullname = fullname;
+	}
+	
+	@Override
+	public abstract boolean borrowHolding();
+
+	
+
+	@Override
+	public abstract double calculateRemainingCredit() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public BorrowingHistory getBorrowingHistory() {
+		return history;
+	}
+
+	@Override
+	public ArrayList<Holding> getCurrentHoldings() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getFullName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getMaxCredit() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String getMemberId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void resetCredit() {
+		// TODO Auto-generated method stub
+
+	}
+	
+	@Override
+	public void returnHolding() {
+		// TODO Auto-generated method stub
+
+	}
+	
+	public String toString() {
+		return "";
+	}
+
+}
