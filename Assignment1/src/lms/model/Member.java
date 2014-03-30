@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface Member extends Borrower {
 	
-	public double calculateRemainingCredit();
+	public int calculateRemainingCredit();
 	
 	public BorrowingHistory getBorrowingHistory();
 	
@@ -12,7 +12,7 @@ public interface Member extends Borrower {
 	
 	public String getFullName();
 	
-	public double getMaxCredit();
+	public int getMaxCredit();
 	
 	public String getMemberId();
 	

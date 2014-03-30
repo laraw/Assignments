@@ -4,38 +4,40 @@ import java.util.*;
 
 public class BorrowingHistory {
 
-	private HashMap<HistoryRecord, Member> records = new HashMap<HistoryRecord, Member>();
-	
-	
+	private ArrayList<HistoryRecord> records = new ArrayList<HistoryRecord>();
+		
 	public BorrowingHistory() {
 		
 	}
 	
 	
-	public void addHistoryRecord(HistoryRecord record, Member m) {
-		records.put(record, m);
+	public void addHistoryRecord(HistoryRecord record) {
+		records.add(record);
 	}
 	
-	public double calculateTotalLateFees(Member member) {
-		
-		double totallatefees = 0;
-		
-		for (int i=0; i <= records.size(); i++) {
-			totallatefees += records.get(i).getFeePayed();
+	public int calculateTotalLateFees() {
+		int latefee = 0;
+		for (int i = 0; i <= records.size(); i++) {
+			latefee += (records.get(i).getFeePayed() - records.get(i).getHolding().calculateLateFee());
 		}
 		
-		
-		return totallatefees;
+		return latefee;
 	}
 	
 	public HistoryRecord getHistoryRecord(Holding holding) {
-		return 
 		
 		
+		for (int i = 0; i <= records.size(); i++) {
+			if (records.get(i).getHolding() == holding) {
+				 return records.get(i);
+			}
+		}
+		
+		return null;
 	}
 	
-	public void getAllHistoryRecords() {
-		
+	public ArrayList<HistoryRecord> getAllHistoryRecords() {
+		return records;
 	}
 	
 	

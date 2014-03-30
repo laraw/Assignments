@@ -16,7 +16,7 @@ public class LibraryCollection {
 		this.name = name;
 	}
 	
-	// needs work... - may need to throw exception
+	
 	public boolean addHolding(Holding holding)  {
 		
 		boolean holdingexist = false;
@@ -69,5 +69,5 @@ public class LibraryCollection {
 		return code+":"+name+":"+holdinglist;
 		
 	}
-
+ 
 }

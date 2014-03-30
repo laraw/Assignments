@@ -1,0 +1,95 @@
+package lms.model;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+import lms.model.exception.InsufficientCreditException;
+import lms.model.exception.MultipleBorrowingException;
+
+public abstract class AbstractMember implements Member {
+
+	private String memberID;
+	private String fullname;
+	private BorrowingHistory history;
+	private ArrayList<Holding> currentholdings = new ArrayList<Holding>();
+	private double credit;
+	private double maxcredit;
+	
+	public AbstractMember() {
+	}
+	
+	public AbstractMember(String memberID, String fullname, double credit, double maxcredit) {
+		this.memberID = memberID;
+		this.fullname = fullname;
+		this.credit = credit;
+		this.maxcredit = maxcredit;
+	}
+	
+	@Override
+	public void borrowHolding(Holding holding) {
+		
+		if (history.getHistoryRecord(holding) != null) {
+			throw new MultipleBorrowingException("This holding has already been borrowed and cannot be borrowed again");
+		}
+		
+		else if (this.calculateRemainingCredit() < holding.getDefaultLoanFee()) {
+	
+			throw new InsufficientCreditException("Member does not have sufficient credit");
+			
+		}
+		
+		
+		else {
+			Date currentdate = new Date();
+			holding.setBorrowDate(currentdate);
+			holding.isOnLoan();
+			currentholdings.add(holding);
+			credit -= holding.getDefaultLoanFee();
+			HistoryRecord record = new HistoryRecord(holding)
+			history.addHistoryRecord(record);
+		
+		}
+	};
+	
+
+	@Override
+	public double calculateRemainingCredit() {
+		return credit;
+	};
+
+	@Override
+	public BorrowingHistory getBorrowingHistory() {
+		return history;
+	}
+
+	@Override
+	public ArrayList<Holding> getCurrentHoldings() {
+		return currentholdings;
+	}
+
+	@Override
+	public String getFullName() {
+		return fullname;
+	}
+
+	@Override
+	public abstract double getMaxCredit();
+
+	@Override
+	public String getMemberId() {
+		return memberID;
+	}
+
+	@Override
+	public void resetCredit() {	
+		credit = maxcredit;
+	};
+	
+	@Override
+	public abstract void returnHolding();
+	
+	public String toString() {
+		return memberID+":"+fullname+":";
+	}
+
+}

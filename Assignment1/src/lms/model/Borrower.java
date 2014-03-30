@@ -1,6 +1,6 @@
 package lms.model;
 
 public interface Borrower {
-	public boolean borrowHolding();
-	public void returnHolding();
+	public void borrowHolding(Holding holding) throws Exception;
+	public void returnHolding(Holding holding) throws Exception;
 }

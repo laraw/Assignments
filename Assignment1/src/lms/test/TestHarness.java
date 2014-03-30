@@ -1,4 +1,5 @@
 package lms.test;
+import lms.*;
 
 /**
  * <b>Programming 2, Assignment 1, SP1 - 2014</b><br/>
@@ -66,16 +67,19 @@ public class TestHarness {
 
 	// use LMS engine (model) to initialise the Library with default
 	// LibraryCollection
+	
 	public static void initialiseEngine() {
 		model = new LMSFacade();
 		model.addCollection(new LibraryCollection(COLLECTION_CODE,
 				COLLECTION_NAME));
+		
 		// IMPORTANT: we need to set artificial date in order to test borrow and
 		// return functions (check the "Assignments" page on Blackboard for further explanation)
 		model.setDate(CURRENT_DATE);
 	}
 
 	public static void initialiseHoldings() {
+		
 		// create sample books
 		book1 = new Book(1000001, "Introduction to Java Programming");
 		book2 = new Book(1000002, "Learning UML");
@@ -1037,7 +1041,7 @@ public class TestHarness {
 	 * ************************************************************************
 	 * //
 	 **************************************************************************/
-
+/**
 	public static void main(String[] args) {
 
 		int menuOption = -1;
@@ -1128,6 +1132,7 @@ public class TestHarness {
 	/**
 	 * Display the test menu.
 	 */
+	
 	public static int mainMenu() {
 		int answer = -1;
 		boolean valid = false;

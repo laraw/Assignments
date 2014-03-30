@@ -1,0 +1,43 @@
+package lms.model;
+
+import java.util.ArrayList;
+
+import lms.model.exception.MultipleBorrowingException;
+
+public class StandardMember extends AbstractMember {
+
+	private static final double STD_MAX_CREDIT = 30.00;
+	
+	
+	public StandardMember() {
+	}
+	
+	
+	public StandardMember(String standardMemberId, String standardMemberName) {
+		super(standardMemberId, standardMemberName, STD_MAX_CREDIT, STD_MAX_CREDIT);
+	}
+
+
+	
+	public double calculateRemainingCredit() {
+		return 0;
+	};
+	
+	public double getMaxCredit() {
+		return STD_MAX_CREDIT;
+	};
+
+	
+	public void returnHolding(Holding holding) {
+		
+	}
+	
+	public String toString() {
+		return super.getMemberId()+":"+this.calculateRemainingCredit()+":"+this.getClass();
+	}
+
+
+	
+	
+
+}

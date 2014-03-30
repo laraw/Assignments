@@ -8,7 +8,7 @@ public interface Holding {
 	
 	// The borrow date is the date the library member borrows the holding
 	
-	public java.util.Date getBorrowDate();
+	public String getBorrowDate();
 	
 	// The holding code is an identifier for the holding
 	
@@ -32,7 +32,7 @@ public interface Holding {
 	
 	// Sets the date a holding is borrowed
 	
-	public void setBorrowDate(Date borrowDate);
+	public void setBorrowDate(String borrowDate);
 	
 	// Returns a string representation of the holding
 	

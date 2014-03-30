@@ -1,9 +1,12 @@
 package lms.model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import lms.model.exception.InsufficientCreditException;
+import lms.model.exception.MultipleBorrowingException;
 
 public abstract class AbstractMember implements Member {
 
@@ -11,13 +14,13 @@ public abstract class AbstractMember implements Member {
 	private String fullname;
 	private BorrowingHistory history;
 	private ArrayList<Holding> currentholdings = new ArrayList<Holding>();
-	private double credit;
-	private double maxcredit;
+	private int credit;
+	private int maxcredit;
 	
 	public AbstractMember() {
 	}
 	
-	public AbstractMember(String memberID, String fullname, double credit, double maxcredit) {
+	public AbstractMember(String memberID, String fullname, int credit, int maxcredit) {
 		this.memberID = memberID;
 		this.fullname = fullname;
 		this.credit = credit;
@@ -25,28 +28,35 @@ public abstract class AbstractMember implements Member {
 	}
 	
 	@Override
-	public void borrowHolding(Holding holding) {
-
+	public void borrowHolding(Holding holding) throws MultipleBorrowingException, InsufficientCreditException {
 		
-		if (this.calculateRemainingCredit() < holding.getDefaultLoanFee()) {
+		if (history.getHistoryRecord(holding) != null) {
+			throw new MultipleBorrowingException("This holding has already been borrowed and cannot be borrowed again");
+		}
+		
+		else if (this.calculateRemainingCredit() < holding.getDefaultLoanFee()) {
 	
 			throw new InsufficientCreditException("Member does not have sufficient credit");
 			
 		}
 		
+		
 		else {
-			Date currentdate = new Date();
-			holding.setBorrowDate(currentdate);
+			Calendar cal = Calendar.getInstance();
+			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+			holding.setBorrowDate(sdf.format(cal));
 			holding.isOnLoan();
 			currentholdings.add(holding);
 			credit -= holding.getDefaultLoanFee();
+			HistoryRecord record = new HistoryRecord(holding);
+			history.addHistoryRecord(record);
 		
 		}
 	};
 	
 
 	@Override
-	public double calculateRemainingCredit() {
+	public int calculateRemainingCredit() {
 		return credit;
 	};
 
@@ -66,7 +76,7 @@ public abstract class AbstractMember implements Member {
 	}
 
 	@Override
-	public abstract double getMaxCredit();
+	public abstract int getMaxCredit();
 
 	@Override
 	public String getMemberId() {
@@ -79,7 +89,7 @@ public abstract class AbstractMember implements Member {
 	};
 	
 	@Override
-	public abstract void returnHolding();
+	public abstract void returnHolding(Holding holding) throws Exception;
 	
 	public String toString() {
 		return memberID+":"+fullname+":";

@@ -1,0 +1,11 @@
+package lms.test;
+import lms.*;
+
+public class TestDebug {
+
+	public TestDebug() {
+		model = new LMSFacade();
+		
+	}
+
+}

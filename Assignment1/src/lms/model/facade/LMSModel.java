@@ -73,17 +73,19 @@ public interface LMSModel {
 	 * Allows a member to borrow a given holding. Deducts loan fee from member's
 	 * borrowing credit. Throws exceptions when the borrowing eligibility is
 	 * violated (refer to the assignment specs for further details).
+	 * @throws Exception 
 	 */
 	public void borrowHolding(int holdingId)
-			throws InsufficientCreditException, MultipleBorrowingException;
+			throws InsufficientCreditException, MultipleBorrowingException, Exception;
 
 	/**
 	 * Allows a member to return a given holding. Deducts late fee, if
 	 * applicable, from member's borrowing credit. Throws exception if the
 	 * (Standard) member's borrowing credit is overdrawn (refer to the
 	 * assignment specs for further details).
+	 * @throws Exception 
 	 */
-	public void returnHolding(int holdingId) throws OverdrawnCreditException;
+	public void returnHolding(int holdingId) throws OverdrawnCreditException, Exception;
 
 	/**
 	 * Returns a borrowing history (collection of all history records) of a

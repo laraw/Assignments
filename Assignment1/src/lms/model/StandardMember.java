@@ -2,11 +2,12 @@ package lms.model;
 
 import java.util.ArrayList;
 
-import lms.model.exception.MultipleBorrowingException;
+import lms.model.exception.*;
+
 
 public class StandardMember extends AbstractMember {
 
-	private static final double STD_MAX_CREDIT = 30.00;
+	private static final int STD_MAX_CREDIT = 30;
 	
 	
 	public StandardMember() {
@@ -16,40 +17,28 @@ public class StandardMember extends AbstractMember {
 	public StandardMember(String standardMemberId, String standardMemberName) {
 		super(standardMemberId, standardMemberName, STD_MAX_CREDIT, STD_MAX_CREDIT);
 	}
-
-
-	public boolean borrowHolding(Holding thisholding) throws MultipleBorrowingException {
-		ArrayList<Holding> holdings = new ArrayList<Holding>();
-		for (int i=0;i<=holdings.size();i++) {
-			if(holdings.get(i).equals(thisholding)) {
-				throw new MultipleBorrowingException("Holding already exists in current holdings");
-			}
-		}
-		return true;
-	};
 	
-	public double calculateRemainingCredit() {
-		return 0;
-	};
-	
-	public double getMaxCredit() {
+	public int getMaxCredit() {
 		return STD_MAX_CREDIT;
 	};
 
 	
-	public void returnHolding() {
+	public void returnHolding(Holding holding) throws OverdrawnCreditException {
+		if(super.calculateRemainingCredit() < holding.calculateLateFee()) {
+			throw new OverdrawnCreditException("Unable to return as credit would become overdrawn");
+		}
 		
+		else {
+			holding.setBorrowDate(null);
+			super.getCurrentHoldings().remove(holding);
+		}
 	}
 	
 	public String toString() {
-		return super.getMemberId()+":"+this.calculateRemainingCredit()+":"+this.getClass();
+		return super.getMemberId()+":"+super.calculateRemainingCredit()+":"+this.getClass();
 	}
 
 
-	@Override
-	public boolean borrowHolding() {
-		return false;
-	}
 	
 	
 

@@ -1,0 +1,9 @@
+package lms.test;
+
+public class TestDebug {
+
+	public TestDebug() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

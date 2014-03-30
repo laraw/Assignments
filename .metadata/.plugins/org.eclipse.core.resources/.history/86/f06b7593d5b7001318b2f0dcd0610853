@@ -1,0 +1,40 @@
+package lms.test;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+import lms.*;
+import lms.model.Holding;
+import lms.model.facade.LMSFacade;
+import lms.model.facade.LMSModel;
+
+public class TestDebug {
+
+	public static void Main(String args[]) {
+		private static final String COLLECTION_CODE = "LIB_IT";
+		private static final String COLLECTION_NAME = "Information Technology";
+
+		private static final String STANDARD_MEMBER_ID = "m00001";
+		private static final String STANDARD_MEMBER_NAME = "Joe Bloggs";
+		private static final String PREMIUM_MEMBER_ID = "m10001";
+		private static final String PREMIUM_MEMBER_NAME = "Fred Bloggs";
+
+		private static final String CURRENT_DATE = "01-01-2014";
+		private static final String BOOK_NORMAL_DATE = "29-01-2014";
+		private static final String BOOK_LATE_DATE = "03-02-2014";
+		private static final String VIDEO_NORMAL_DATE = "08-01-2014";
+		private static final String VIDEO_LATE_DATE = "13-01-2014";
+
+		private static LMSModel model;
+
+		private static BufferedReader stdin = new BufferedReader(
+				new InputStreamReader(System.in));
+
+		private static Holding book1, book2, book3;
+		private static Holding video1, video2, video3, video4;
+		
+		
+		model = new LMSFacade();
+	}
+
+
+}

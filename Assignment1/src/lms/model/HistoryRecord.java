@@ -6,9 +6,8 @@ public class HistoryRecord {
 	private double feepaid;
 
 	
-	public HistoryRecord(Holding holding, Member member) {
+	public HistoryRecord(Holding holding) {
 		this.holding = holding;
-		feepaid = holding.calculateLateFee() + holding.getDefaultLoanFee();
 	}
 	
 	public Holding getHolding() {
@@ -16,7 +15,8 @@ public class HistoryRecord {
 	}
 	
 	public double getFeePayed() {
-		return feepaid; 
+		double fee = holding.calculateLateFee() + holding.getDefaultLoanFee();
+		return fee;
 	}
 	
 	public String toString() {

@@ -1,6 +1,7 @@
 package lms.model;
 
 import java.util.*;
+
 import lms.model.exception.*;
 
 public class Library {
@@ -10,7 +11,6 @@ public class Library {
 	
 	
 	public Library() {
-		
 	}
 	
 	public void addCollection(LibraryCollection collection){
@@ -25,8 +25,9 @@ public class Library {
 		this.member = member;
 	}
 	
-	public void borrowHolding() throws InsufficientCreditException, MultipleBorrowingException {
-		member.borrowHolding();
+	public void borrowHolding (Holding holding) throws Exception {
+		member.borrowHolding(holding);
+		
 	}
 	
 	public double calculateRemainingCredit() {
@@ -34,7 +35,7 @@ public class Library {
 	}
 	
 	public double calculateTotalLateFees() {
-		return member.getBorrowingHistory().calculateTotalLateFees(member);
+		return member.getBorrowingHistory().calculateTotalLateFees();
 	}
 	
 	public ArrayList<Holding> getAllHoldings () { 
@@ -50,8 +51,8 @@ public class Library {
 		return collection;
 	}
 	
-	public void getHistoryRecord() {
-		
+	public HistoryRecord getHistoryRecord(Holding holding) {
+		return member.getBorrowingHistory().getHistoryRecord(holding);
 	}
 	
 	public Holding getHolding(int code) {
@@ -70,7 +71,8 @@ public class Library {
 		member.resetCredit();
 	}
 	
-	public void returnHolding() {
+	public void returnHolding(Holding holding) throws Exception {
+		member.returnHolding(holding);
 		
 	}
 }
