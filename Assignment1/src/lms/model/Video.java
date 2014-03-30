@@ -10,7 +10,7 @@ public class Video extends AbstractHolding {
 	private static final int MAX_LOAN_PERIOD = 7;
 	
 	public Video() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Video(int code, String title) {
@@ -21,6 +21,7 @@ public class Video extends AbstractHolding {
 		super(code, title);
 		this.standardLoanFee = standardLoanFee;
 	}
+	
 	@Override
 	public double getDefaultLoanFee() {
 		return standardLoanFee;
@@ -33,7 +34,6 @@ public class Video extends AbstractHolding {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return super.toString()+":"+standardLoanFee+":"+MAX_LOAN_PERIOD+":"+this.getClass();
 	}
 	
@@ -45,7 +45,9 @@ public class Video extends AbstractHolding {
 		double surcharge = standardLoanFee * 0.50;
 		double latefee;
 		
-		// Since the date util takes only a 
+		// The date must be converted to string to pass to the utility method telling us the number of elapsed days a holding has 
+		// been on loan
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		String borrowDate = sdf.format(super.getBorrowDate());
 		int elapseddays = DateUtil.getInstance().getElapsedDays(borrowDate);

@@ -1,6 +1,9 @@
 package lms.model;
 
 import java.util.ArrayList;
+import java.util.Date;
+
+import lms.model.exception.InsufficientCreditException;
 
 public abstract class AbstractMember implements Member {
 
@@ -22,12 +25,30 @@ public abstract class AbstractMember implements Member {
 	}
 	
 	@Override
-	public abstract boolean borrowHolding();
+	public void borrowHolding(Holding holding) {
 
+		
+		if (this.calculateRemainingCredit() < holding.getDefaultLoanFee()) {
+	
+			throw new InsufficientCreditException("Member does not have sufficient credit");
+			
+		}
+		
+		else {
+			Date currentdate = new Date();
+			holding.setBorrowDate(currentdate);
+			holding.isOnLoan();
+			currentholdings.add(holding);
+			credit -= holding.getDefaultLoanFee();
+		
+		}
+	};
 	
 
 	@Override
-	public abstract double calculateRemainingCredit();
+	public double calculateRemainingCredit() {
+		return credit;
+	};
 
 	@Override
 	public BorrowingHistory getBorrowingHistory() {

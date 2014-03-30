@@ -1,14 +1,12 @@
 package lms.model;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.*;
 
 import lms.model.util.*;
 
 
 public class Book extends AbstractHolding {
-	
-	
 
 	private static final int MAX_LOAN_PERIOD = 28;
 	private static final double STANDARD_LOAN_FEE = 10.00;
@@ -32,15 +30,9 @@ public class Book extends AbstractHolding {
 		return MAX_LOAN_PERIOD;
 	}
 
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString()+":"+STANDARD_LOAN_FEE+":"+MAX_LOAN_PERIOD+":"+this.getClass();
-	}
-	
+		
 	// To calculate a books late fee, the number of days late is calculated by getting the difference between the borrow date, the max loan period
-	// and the current date. 
-	// Books have a daily fixed rate of $2
+	// and the current date. Books have a daily fixed rate of $2
 	
 	public double calculateLateFee() {
 		double latefee = 0.00;
@@ -62,5 +54,10 @@ public class Book extends AbstractHolding {
 		return latefee;
 	}
 	
+	
+	@Override
+	public String toString() {
+		return super.toString()+":"+STANDARD_LOAN_FEE+":"+MAX_LOAN_PERIOD+":"+this.getClass();
+	}
 
 }					

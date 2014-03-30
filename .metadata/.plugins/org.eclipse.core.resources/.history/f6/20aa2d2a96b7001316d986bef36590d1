@@ -1,0 +1,40 @@
+package lms.model;
+
+import java.util.*;
+
+public class BorrowingHistory {
+
+	private Map<Member,HistoryRecord> records = new HashMap<Member,HistoryRecord>();
+	
+	
+	public BorrowingHistory() {
+		
+	}
+	
+	
+	public void addHistoryRecord(HistoryRecord record, Member member) {
+		records.put(member, record);
+	}
+	
+	public double calculateTotalLateFees(Member member) {
+		
+		double totallatefees = 0;
+		
+		totallatefees += records.get(member).getFeePayed();
+		
+		return totallatefees;
+	}
+	
+	public HistoryRecord getHistoryRecord(Member member) {
+		return records.get(member);
+		
+		
+	}
+	
+	public Map<Member, HistoryRecord> getAllHistoryRecords() {
+		return records;
+	}
+	
+	
+
+}

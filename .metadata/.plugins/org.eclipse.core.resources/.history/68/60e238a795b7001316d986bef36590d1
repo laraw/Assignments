@@ -1,0 +1,47 @@
+package lms.model;
+
+import java.util.*;
+
+public class BorrowingHistory {
+
+	private Map<Member,HistoryRecord> records = new HashMap<Member,HistoryRecord>();
+	
+	
+	public BorrowingHistory() {
+		
+	}
+	
+	public BorrowingHistory(HistoryRecord record, Member member) {
+		records.put(record, m);
+	}
+	
+	public void addHistoryRecord(HistoryRecord record) {
+		records.put(record, calculateTotalLateFees());
+	}
+	
+	public double calculateTotalLateFees() {
+		
+		double totallatefees = 0;
+		
+		Iterator<HistoryRecord> iter = records.iterator();
+		
+		while(iter.hasNext()) {
+			totallatefees += iter.next().getFeePayed();
+		}
+		
+		return totallatefees;
+	}
+	
+	public HistoryRecord getHistoryRecord() {
+		
+		
+		
+	}
+	
+	public Set<HistoryRecord> getAllHistoryRecords() {
+		return records;
+	}
+	
+	
+
+}

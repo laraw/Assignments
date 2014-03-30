@@ -19,6 +19,7 @@ public class LMSFacade implements LMSModel {
 	private Library newlibrary;
 	private LibraryCollection collection;
 	
+	
 	public LMSFacade() {
 		
 	}
@@ -41,7 +42,9 @@ public class LMSFacade implements LMSModel {
 	/**
 	 * Returns the (current) member
 	 */
-	public Member getMember();
+	public Member getMember() {
+		return newlibrary.getMember();
+	};
 
 	/**
 	 * Returns the (current) library collection

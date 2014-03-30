@@ -4,38 +4,38 @@ import java.util.*;
 
 public class BorrowingHistory {
 
-	private Set<HistoryRecord> records = new HashSet<HistoryRecord>();
+	private HashMap<HistoryRecord, Member> records = new HashMap<HistoryRecord, Member>();
+	
 	
 	public BorrowingHistory() {
 		
 	}
 	
-	public void addHistoryRecord(HistoryRecord record) {
-		records.add(record);
+	
+	public void addHistoryRecord(HistoryRecord record, Member m) {
+		records.put(record, m);
 	}
 	
-	public double calculateTotalLateFees() {
+	public double calculateTotalLateFees(Member member) {
 		
 		double totallatefees = 0;
 		
-		Iterator<HistoryRecord> iter = records.iterator();
-		
-		while(iter.hasNext()) {
-			totallatefees += iter.next().getFeePayed();
+		for (int i=0; i <= records.size(); i++) {
+			totallatefees += records.get(i).getFeePayed();
 		}
+		
 		
 		return totallatefees;
 	}
 	
-	public HistoryRecord getHistoryRecord(int recordID) {
+	public HistoryRecord getHistoryRecord(Holding holding) {
+		return 
 		
-		Iterator<HistoryRecord> iter = records.iterator();
 		
-		while iter.h
 	}
 	
-	public Set<HistoryRecord> getAllHistoryRecords() {
-		return records;
+	public void getAllHistoryRecords() {
+		
 	}
 	
 	

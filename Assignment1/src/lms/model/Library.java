@@ -1,6 +1,7 @@
 package lms.model;
 
-import java.util.ArrayList;
+import java.util.*;
+import lms.model.exception.*;
 
 public class Library {
 	
@@ -16,15 +17,15 @@ public class Library {
 		this.collection = collection;
 	}
 	
-	public void addHolding(Holding holding) {
-		collection.addHolding(holding);
+	public boolean addHolding(Holding holding) {
+		return collection.addHolding(holding);
 	}
 	
 	public void addMember(Member member) {
 		this.member = member;
 	}
 	
-	public void borrowHolding() {
+	public void borrowHolding() throws InsufficientCreditException, MultipleBorrowingException {
 		member.borrowHolding();
 	}
 	
@@ -33,7 +34,7 @@ public class Library {
 	}
 	
 	public double calculateTotalLateFees() {
-		return 0.00;
+		return member.getBorrowingHistory().calculateTotalLateFees(member);
 	}
 	
 	public ArrayList<Holding> getAllHoldings () { 
@@ -41,31 +42,32 @@ public class Library {
 		return holdings;
 	}
 	
-	public void getBorrowedHoldings () {
-	
+	public ArrayList<Holding> getBorrowedHoldings () {
+		return member.getCurrentHoldings();
 	}
 	
-	public void getCollection() {
-		
+	public LibraryCollection getCollection() {
+		return collection;
 	}
 	
 	public void getHistoryRecord() {
 		
 	}
 	
-	public void getHolding() {
-		
+	public Holding getHolding(int code) {
+		return collection.getHolding(code);
 	}
 	
-	public void getMember() {
-		
+	public Member getMember() {
+		return member;
 	}
 	
-	public void removeHolding () {
-
+	public boolean removeHolding (int code)  {
+		return collection.removeHolding(code);
 	}
 	
 	public void resetCredit() {
+		member.resetCredit();
 	}
 	
 	public void returnHolding() {

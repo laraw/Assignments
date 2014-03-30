@@ -1,6 +1,7 @@
 package lms.model;
 
-import java.util.ArrayList;
+import java.util.*;
+
 
 public class LibraryCollection {
 	
@@ -16,19 +17,17 @@ public class LibraryCollection {
 	}
 	
 	// needs work... - may need to throw exception
-	public boolean addHolding(Holding holding) {
+	public boolean addHolding(Holding holding)  {
 		
 		boolean holdingexist = false;
 		for (int i = 0; i <= holdings.size(); i++) {
 			if (holdings.get(i).getCode() == holding.getCode()) {
-				// throw exception here
 				holdingexist = true;
 				
 			}
 		}
 		
-		if (!holdingexist) {
-			
+		if (!holdingexist) {			
 			holdings.add(holding);
 		}
 		
@@ -44,8 +43,10 @@ public class LibraryCollection {
 		return holdings.get(code);
 	}
 	
-	public boolean removeHolding(int code) {
+	public boolean removeHolding(int code)  {
+		
 		boolean isonloan=false;
+		
 		if(holdings.get(code).isOnLoan()) {
 			isonloan = true;
 		}
