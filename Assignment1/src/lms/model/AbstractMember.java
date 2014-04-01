@@ -7,12 +7,13 @@ import java.util.Date;
 
 import lms.model.exception.InsufficientCreditException;
 import lms.model.exception.MultipleBorrowingException;
+import lms.model.util.DateUtil;
 
 public abstract class AbstractMember implements Member {
 
 	private String memberID;
 	private String fullname;
-	private BorrowingHistory history;
+	private BorrowingHistory history = new BorrowingHistory();
 	private ArrayList<Holding> currentholdings = new ArrayList<Holding>();
 	private int credit;
 	private int maxcredit;
@@ -30,28 +31,25 @@ public abstract class AbstractMember implements Member {
 	@Override
 	public void borrowHolding(Holding holding) throws MultipleBorrowingException, InsufficientCreditException {
 		
-		if (history.getHistoryRecord(holding) != null) {
+				
+		if (history.getHistoryRecord(holding.getCode()) != null) {
 			throw new MultipleBorrowingException("This holding has already been borrowed and cannot be borrowed again");
 		}
 		
 		else if (this.calculateRemainingCredit() < holding.getDefaultLoanFee()) {
-	
 			throw new InsufficientCreditException("Member does not have sufficient credit");
-			
 		}
 		
 		
 		else {
-			Calendar cal = Calendar.getInstance();
-			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-			holding.setBorrowDate(sdf.format(cal));
-			holding.isOnLoan();
+			holding.onLoan(true);
 			currentholdings.add(holding);
 			credit -= holding.getDefaultLoanFee();
-			HistoryRecord record = new HistoryRecord(holding);
-			history.addHistoryRecord(record);
+			holding.setBorrowDate(DateUtil.getInstance().getDate());
 		
 		}
+		
+		
 	};
 	
 

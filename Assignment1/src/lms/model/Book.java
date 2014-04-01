@@ -9,8 +9,8 @@ import lms.model.util.*;
 public class Book extends AbstractHolding {
 
 	private static final int MAX_LOAN_PERIOD = 28;
-	private static final double STANDARD_LOAN_FEE = 10.00;
-	private static final double LATE_FEE = 2.00;
+	private static final int STANDARD_LOAN_FEE = 10;
+	private static final int LATE_FEE = 2;
 	
 	public Book() {
 		
@@ -38,10 +38,8 @@ public class Book extends AbstractHolding {
 		double latefee = 0.00;
 		
 		// First calculate the number of days between the current date and the borrow date
-		// since the date util elapsed days method will only accept a string, the borrow date is converted to string format
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		String borrowDate = sdf.format(super.getBorrowDate());
-		int elapseddays = DateUtil.getInstance().getElapsedDays(borrowDate);
+	
+		int elapseddays = DateUtil.getInstance().getElapsedDays(super.getBorrowDate());
 		
 		if (elapseddays <= MAX_LOAN_PERIOD) {
 			latefee = 0.00;
@@ -57,7 +55,7 @@ public class Book extends AbstractHolding {
 	
 	@Override
 	public String toString() {
-		return super.toString()+":"+STANDARD_LOAN_FEE+":"+MAX_LOAN_PERIOD+":"+this.getClass();
+		return super.toString()+":"+STANDARD_LOAN_FEE+":"+MAX_LOAN_PERIOD+":"+"BOOK";
 	}
 
 }					

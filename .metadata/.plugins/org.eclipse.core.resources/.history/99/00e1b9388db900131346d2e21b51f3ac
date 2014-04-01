@@ -1,0 +1,37 @@
+package lms.model;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+import lms.model.exception.InsufficientCreditException;
+
+public class PremiumMember extends AbstractMember {
+
+	private static final int PREMIUM_MAX_CREDIT = 45;
+	ArrayList<Holding> currentholdings = super.getCurrentHoldings();
+	
+	public PremiumMember() {
+		
+	}
+
+	public PremiumMember(String premiumMemberId, String premiumMemberName) {
+		super(premiumMemberId, premiumMemberName, PREMIUM_MAX_CREDIT, PREMIUM_MAX_CREDIT);
+		
+	}
+
+	public int getMaxCredit() {
+		return PREMIUM_MAX_CREDIT;
+	};
+
+	
+	public void returnHolding(Holding holding) {
+		HistoryRecord histrecord = new HistoryRecord(holding, holding.calculateLateFee() + holding.getDefaultLoanFee());
+		super.getCurrentHoldings().remove(holding);
+	}
+	
+	public String toString() {
+		return super.getMemberId()+":"+super.getFullName()+":"+super.calculateRemainingCredit()+":"+"PREMIUM";
+	}
+
+	
+}

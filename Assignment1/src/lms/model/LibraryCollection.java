@@ -17,57 +17,79 @@ public class LibraryCollection {
 	}
 	
 	
+	public LibraryCollection() {
+	}
+
+
 	public boolean addHolding(Holding holding)  {
 		
-		boolean holdingexist = false;
-		for (int i = 0; i <= holdings.size(); i++) {
-			if (holdings.get(i).getCode() == holding.getCode()) {
-				holdingexist = true;
-				
+		boolean addok = true;
+		
+		if (holdings.size() != 0) {
+			for (int i = 0; i < holdings.size(); i++) {
+				if (holdings.get(i).getCode() == holding.getCode()) {
+					addok = false;
+					
+				}
 			}
 		}
 		
-		if (!holdingexist) {			
+		if (addok) {			
 			holdings.add(holding);
 		}
 		
-		return holdingexist;
+		return addok;
 		
 	}
 	
 	public ArrayList<Holding> getAllHoldings() {
-		return holdings;
+			return holdings;
+		
+		
 	}
 	
 	public Holding getHolding(int code) {
-		return holdings.get(code);
+		for(int i = 0; i < holdings.size(); i++) {
+			if(holdings.get(i).getCode() == code) {
+				return holdings.get(i);
+			}
+		}
+		
+		return null;
 	}
 	
 	public boolean removeHolding(int code)  {
 		
-		boolean isonloan=false;
-		
-		if(holdings.get(code).isOnLoan()) {
-			isonloan = true;
-		}
-		else {
-			holdings.remove(code);
-			isonloan = false;
-		}
-		
-		return isonloan;
+		for (int i = 0; i < holdings.size(); i++) {
+			if(holdings.get(i).getCode() == code) {
+				if (holdings.get(i).isOnLoan()) {
+						return false;
+				}
+			else {
+					holdings.remove(i);
+					return true;
+				}
+			}
 			
+		}
+		return false;
 	}
 	
 	public String toString() {
 		String holdinglist = "";
 		
-		for (int i = 0; i<= holdings.size(); i++) {
-			holdinglist = holdinglist + holdings.get(i).getCode();
+		if (holdings.size() != 0) {	
+			for (int i = 0; i < holdings.size(); i++) {
+				if(i != holdings.size()-1) {
+				holdinglist = holdinglist + holdings.get(i).getCode() +",";
+			}
+			else {
+					holdinglist = holdinglist + holdings.get(i).getCode();
+			}
 		}
-		
+		}
 		return code+":"+name+":"+holdinglist;
 		
+		
 	}
- 
 }

@@ -61,21 +61,15 @@ public abstract class AbstractHolding implements Holding {
 		return isOnLoan;
 	}
 
-	
+	public void onLoan(boolean isOnLoan) {
+		this.isOnLoan = isOnLoan;
+	}
 	// When a holding is borrowed, the date the holding was borrowed is set, it can be determined then that the holding is on loan and this value
 	// is set to true
 	
 	@Override
 	public void setBorrowDate(String borrowDate) {
-		
-		
-		if (borrowDate != null) {
-			this.borrowDate = borrowDate;
-			isOnLoan = true;
-		}
-		else {
-			isOnLoan = false;
-		}
+		this.borrowDate = borrowDate;
 	}
 
 

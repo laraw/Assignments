@@ -6,6 +6,7 @@ import lms.model.Holding;
 import lms.model.Library;
 import lms.model.LibraryCollection;
 import lms.model.Member;
+import lms.model.Video;
 import lms.model.exception.InsufficientCreditException;
 import lms.model.exception.MultipleBorrowingException;
 import lms.model.exception.OverdrawnCreditException;
@@ -17,7 +18,7 @@ import lms.model.util.DateUtil;
 public class LMSFacade implements LMSModel {
 
 	/* you need to implement all LMSModel functions here */
-	private Library newlibrary;
+	private Library newlibrary = new Library();
 	
 	public LMSFacade() {		
 	}
@@ -57,7 +58,7 @@ public class LMSFacade implements LMSModel {
 	 * collection).
 	 */
 	public boolean addHolding(Holding holding) {
-		return newlibrary.getCollection().addHolding(holding);
+		return newlibrary.addHolding(holding);
 	};
 
 	/**
@@ -72,16 +73,26 @@ public class LMSFacade implements LMSModel {
 	 * Retrieves a holding according to the provided holdingId
 	 */
 	public Holding getHolding(int holdingId) {
-		return newlibrary.getHolding(holdingId);
+		if (newlibrary.getCollection().getHolding(holdingId) != null) {
+			return newlibrary.getHolding(holdingId);
+		}
+		
+		else {
+			return null;
+		}
 	};
 
 	/**
 	 * Returns all holdings held in the library collection
 	 */
 	public Holding[] getAllHoldings() {
-		Holding[] holdings = new Holding[0];
-		newlibrary.getAllHoldings().toArray(holdings);
-		return holdings;
+		if (newlibrary.getAllHoldings().size() != 0) {
+			Holding[] holdings = newlibrary.getAllHoldings().toArray(new Holding[newlibrary.getAllHoldings().size()]);
+			return holdings;
+		}
+		else {
+			return null;
+		}
 	};
 	
 	/**
@@ -91,7 +102,7 @@ public class LMSFacade implements LMSModel {
 	public int countBooks() {
 		int bookcount = 0;
 		
-		for (int i = 0; i <= newlibrary.getAllHoldings().size(); i++) {
+		for (int i = 0; i < newlibrary.getAllHoldings().size(); i++) {
 			if (newlibrary.getAllHoldings().get(i) instanceof Book) {
 				bookcount++;
 			}
@@ -108,8 +119,8 @@ public class LMSFacade implements LMSModel {
 	public int countVideos() {
 		int videocount = 0;
 		
-		for (int i = 0; i <= newlibrary.getAllHoldings().size(); i++) {
-			if (newlibrary.getAllHoldings().get(i) instanceof Book) {
+		for (int i = 0; i < newlibrary.getAllHoldings().size(); i++) {
+			if (newlibrary.getAllHoldings().get(i) instanceof Video) {
 				videocount++;
 			}
 		}
@@ -124,7 +135,7 @@ public class LMSFacade implements LMSModel {
 	 * @throws Exception 
 	 */
 	public void borrowHolding(int holdingId) throws Exception {
-		newlibrary.borrowHolding(newlibrary.getHolding(holdingId));
+		newlibrary.borrowHolding(holdingId);
 	};
 
 	/**
@@ -144,25 +155,37 @@ public class LMSFacade implements LMSModel {
 	 */
 	public HistoryRecord[] getBorrowingHistory() {
 		
-		HistoryRecord[] records = new HistoryRecord[0];
-		records = newlibrary.getMember().getBorrowingHistory().getAllHistoryRecords().toArray(records);		
-		return records;
+		HistoryRecord[] records = new HistoryRecord[newlibrary.getMember().getBorrowingHistory().getAllHistoryRecords().size()];
+		records = newlibrary.getMember().getBorrowingHistory().getAllHistoryRecords().toArray(records);	
+		
+		if (records.length != 0) {
+			return records;
+		}
+		
+		else {
+			return null;
+		}
 	};
 
 	/**
 	 * Returns a specific history record from the borrowing history
 	 */
 	public HistoryRecord getHistoryRecord(int holdingId) {
-		return newlibrary.getHistoryRecord(newlibrary.getHolding(holdingId));
+		return newlibrary.getHistoryRecord(holdingId);
 	};
 
 	/**
 	 * Returns a collection of all currently borrowed holdings
 	 */
 	public Holding[] getBorrowedHoldings() {
-		Holding[] holdings = new Holding[0];
-		holdings = newlibrary.getAllHoldings().toArray(holdings);
-		return holdings;
+		Holding[] holdings = newlibrary.getBorrowedHoldings().toArray(new Holding[newlibrary.getBorrowedHoldings().size()]);
+		if (holdings.length != 0) {
+			return holdings;
+		}
+		
+		else {
+			return null;
+		}
 	};
 
 	/**

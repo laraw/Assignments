@@ -1,0 +1,26 @@
+package lms.model;
+
+public class HistoryRecord {
+
+	private Holding holding;
+	private int feepaid;
+
+	
+	public HistoryRecord(Holding holding, double feepaid) {
+		this.holding = holding;
+	}
+	
+	public Holding getHolding() {
+		return holding;
+	}
+	
+	public double getFeePayed() {
+		return feepaid;
+	}
+	
+	public String toString() {
+		return holding.getCode()+":" + feepaid;
+	}
+	
+
+}

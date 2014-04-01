@@ -1,0 +1,88 @@
+package lms.model;
+
+import java.util.*;
+
+
+public class LibraryCollection {
+	
+	private String code;
+	private String name;
+	private ArrayList<Holding> holdings = new ArrayList<Holding>();
+	
+		
+	
+	public LibraryCollection(String collectionCode, String name) {
+		this.code = collectionCode;
+		this.name = name;
+	}
+	
+	
+	public LibraryCollection() {
+	}
+
+
+	public boolean addHolding(Holding holding)  {
+		
+		boolean holdingexist = false;
+		
+		if (holdings.size() != 0) {
+			for (int i = 0; i < holdings.size(); i++) {
+				if (holdings.get(i).getCode() == holding.getCode()) {
+					holdingexist = true;
+					
+				}
+			}
+		}
+		
+		if (!holdingexist) {			
+			holdings.add(holding);
+		}
+		
+		return holdingexist;
+		
+	}
+	
+	public ArrayList<Holding> getAllHoldings() {
+		return holdings;
+	}
+	
+	public Holding getHolding(int code) {
+		for(int i = 0; i < holdings.size(); i++) {
+			if(holdings.get(i).getCode() == code) {
+				return holdings.get(i);
+			}
+		}
+		
+		return null;
+	}
+	
+	public boolean removeHolding(int code)  {
+		
+		boolean isonloan=false;
+		
+		if(holdings.get(code).isOnLoan()) {
+			isonloan = true;
+		}
+		else {
+			holdings.remove(code);
+			isonloan = false;
+		}
+		
+		return isonloan;
+			
+	}
+	
+	public String toString() {
+		String holdinglist = "";
+		
+		if (holdings.size() != 0) {	
+			for (int i = 0; i < holdings.size(); i++) {
+				holdinglist = holdinglist + holdings.get(i).getCode() +",";
+			}
+		}
+		
+		return code+":"+name+":"+holdinglist;
+		
+	}
+ 
+}

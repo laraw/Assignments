@@ -25,12 +25,12 @@ public class PremiumMember extends AbstractMember {
 
 	
 	public void returnHolding(Holding holding) {
-		holding.setBorrowDate(null);
+		HistoryRecord histrecord = new HistoryRecord(holding, (int)(holding.calculateLateFee() + holding.getDefaultLoanFee()));
 		super.getCurrentHoldings().remove(holding);
 	}
 	
 	public String toString() {
-		return super.getMemberId()+":"+super.calculateRemainingCredit()+":"+this.getClass();
+		return super.getMemberId()+":"+super.getFullName()+":"+super.calculateRemainingCredit()+":"+"PREMIUM";
 	}
 
 	

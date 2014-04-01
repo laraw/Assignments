@@ -25,7 +25,9 @@ public interface Holding {
 	// Returns the holding title
 	
 	public String getTitle();
+	// Will set a holding to be on loan
 	
+	public void onLoan(boolean onLoan);
 	// Will return true if the holding is on loan
 	
 	public boolean isOnLoan();

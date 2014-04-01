@@ -6,12 +6,14 @@ import lms.model.exception.*;
 
 public class Library {
 	
-	private LibraryCollection collection;
+	private LibraryCollection collection = new LibraryCollection();
 	private Member member;
 	
 	
 	public Library() {
 	}
+	
+	
 	
 	public void addCollection(LibraryCollection collection){
 		this.collection = collection;
@@ -25,8 +27,8 @@ public class Library {
 		this.member = member;
 	}
 	
-	public void borrowHolding (Holding holding) throws Exception {
-		member.borrowHolding(holding);
+	public void borrowHolding (int holdingId) throws Exception {
+		member.borrowHolding(collection.getHolding(holdingId));
 		
 	}
 	
@@ -39,8 +41,8 @@ public class Library {
 	}
 	
 	public ArrayList<Holding> getAllHoldings () { 
-		ArrayList<Holding> holdings = new ArrayList<Holding>();
-		return holdings;
+		return collection.getAllHoldings();
+		
 	}
 	
 	public ArrayList<Holding> getBorrowedHoldings () {
@@ -51,8 +53,8 @@ public class Library {
 		return collection;
 	}
 	
-	public HistoryRecord getHistoryRecord(Holding holding) {
-		return member.getBorrowingHistory().getHistoryRecord(holding);
+	public HistoryRecord getHistoryRecord(int holdingId) {
+		return member.getBorrowingHistory().getHistoryRecord(holdingId);
 	}
 	
 	public Holding getHolding(int code) {
@@ -75,4 +77,6 @@ public class Library {
 		member.returnHolding(holding);
 		
 	}
+	
+	
 }

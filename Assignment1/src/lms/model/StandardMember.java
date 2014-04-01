@@ -29,13 +29,16 @@ public class StandardMember extends AbstractMember {
 		}
 		
 		else {
+			HistoryRecord histrecord = new HistoryRecord(holding, (int)(holding.calculateLateFee() + holding.getDefaultLoanFee()));
+			super.getBorrowingHistory().addHistoryRecord(histrecord);
+			holding.onLoan(false);
 			holding.setBorrowDate(null);
 			super.getCurrentHoldings().remove(holding);
 		}
 	}
 	
 	public String toString() {
-		return super.getMemberId()+":"+super.calculateRemainingCredit()+":"+this.getClass();
+		return super.getMemberId()+":"+super.getFullName()+":"+super.calculateRemainingCredit()+":"+"STANDARD";
 	}
 
 
