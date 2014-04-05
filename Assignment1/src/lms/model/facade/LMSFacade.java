@@ -1,3 +1,14 @@
+/** 
+ Assignment 1, Programming 2, RMIT University. 
+ Author: Lara Wilkinson s3342496
+ Date: 04/02/2014
+
+ Description:  The library class is the interface between the member and the libraries collections of holdings.
+ The library class refers to both the Library Collection object and the Member object and allows the member
+ to interact the library collection object to borrow and return holdings. 
+ 
+**/
+
 package lms.model.facade;
 
 import lms.model.Book;
@@ -8,6 +19,7 @@ import lms.model.LibraryCollection;
 import lms.model.Member;
 import lms.model.Video;
 import lms.model.exception.InsufficientCreditException;
+import lms.model.exception.LMSException;
 import lms.model.exception.MultipleBorrowingException;
 import lms.model.exception.OverdrawnCreditException;
 import lms.model.util.DateUtil;
@@ -17,7 +29,9 @@ import lms.model.util.DateUtil;
  */
 public class LMSFacade implements LMSModel {
 
-	/* you need to implement all LMSModel functions here */
+	// The library object provides the interface between the libraries objects (the members, collections and holdings)
+	// and the rest of the program
+	
 	private Library newlibrary = new Library();
 	
 	public LMSFacade() {		
@@ -134,7 +148,7 @@ public class LMSFacade implements LMSModel {
 	 * violated (refer to the assignment specs for further details).
 	 * @throws Exception 
 	 */
-	public void borrowHolding(int holdingId) throws Exception {
+	public void borrowHolding(int holdingId) throws LMSException {
 		newlibrary.borrowHolding(holdingId);
 	};
 

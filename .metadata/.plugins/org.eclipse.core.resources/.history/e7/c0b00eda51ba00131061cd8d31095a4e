@@ -1,0 +1,7 @@
+package lms.model;
+import lms.model.exception.*;
+
+public interface Borrower {
+	public void borrowHolding(Holding holding) throws LMSException;
+	public void returnHolding(Holding holding) throws LMSException;
+}

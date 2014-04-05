@@ -1,3 +1,12 @@
+/** 
+ Assignment 1, Programming 2, RMIT University. 
+ Author: Lara Wilkinson s3342496
+ Date: 04/02/2014
+
+ Description:  Within the library, there are various types of holdings which can be borrowed by Library members.  
+ The abstract holding class provides a blueprint for the attributes and behaviours of those holdings.
+**/
+
 package lms.model;
 
 import java.util.Date;
@@ -9,6 +18,7 @@ public abstract class AbstractHolding implements Holding {
 	private String borrowDate;
 	public boolean isOnLoan = false;
 	
+	// Constructs an abstract holding with no properties
 	
 	public AbstractHolding() {
 
@@ -32,7 +42,15 @@ public abstract class AbstractHolding implements Holding {
 		public String getTitle() {
 			return title;
 		}
+
+
+	// When a holding is borrowed, the date the holding was borrowed is set
 		
+	@Override
+	public void setBorrowDate(String borrowDate) {
+		this.borrowDate = borrowDate;
+	}
+
 	
 	// Returns the date that a holding was borrowed, this is used to calculate late fees if applicable
 	
@@ -49,29 +67,27 @@ public abstract class AbstractHolding implements Holding {
 	public abstract double getDefaultLoanFee();
 
 	
-	// Each type of holding has a maximum period that it can be loaned to a member, this is implemented in the subclass
+	// Each type of holding has a maximum period that it can be loaned to a member
 	
 	@Override
 	public abstract int getMaxLoanPeriod();
 
 
 	
+	// This allows us to find out if a holding is on loan to ensure that it cannot be borrowed twice
+	
 	@Override
 	public boolean isOnLoan() {
 		return isOnLoan;
 	}
 
+	// This allows us to flag a holding as being on loan to ensure that it cannot be borrowed twice
+
 	public void onLoan(boolean isOnLoan) {
 		this.isOnLoan = isOnLoan;
 	}
-	// When a holding is borrowed, the date the holding was borrowed is set, it can be determined then that the holding is on loan and this value
-	// is set to true
 	
-	@Override
-	public void setBorrowDate(String borrowDate) {
-		this.borrowDate = borrowDate;
-	}
-
+	
 
 	// Returns a string representation of the holding
 		

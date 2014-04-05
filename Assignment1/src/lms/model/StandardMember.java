@@ -1,3 +1,11 @@
+/** 
+Assignment 1, Programming 2, RMIT University. 
+Author: Lara Wilkinson, s3342496
+Date: 04/02/2014
+
+Description:  The Standard Member has a max credit value of $30 and is not able to return a book if they cannot pay the late fee.
+**/
+
 package lms.model;
 
 import java.util.ArrayList;
@@ -23,17 +31,27 @@ public class StandardMember extends AbstractMember {
 	};
 
 	
+	
 	public void returnHolding(Holding holding) throws OverdrawnCreditException {
 		if(super.calculateRemainingCredit() < holding.calculateLateFee()) {
 			throw new OverdrawnCreditException("Unable to return as credit would become overdrawn");
 		}
 		
 		else {
-			HistoryRecord histrecord = new HistoryRecord(holding, (int)(holding.calculateLateFee() + holding.getDefaultLoanFee()));
-			super.getBorrowingHistory().addHistoryRecord(histrecord);
-			holding.onLoan(false);
-			holding.setBorrowDate(null);
+			
+			// First calculate & deduct any late fees from the members account
+			super.deductLateFee((int)(holding.calculateLateFee()));
+			
+			// Remove the current holding from the collection of current member holdings
 			super.getCurrentHoldings().remove(holding);
+			
+			// Create a new history record and add it to the members history
+			
+			HistoryRecord histrecord = new HistoryRecord(holding, (int)(holding.getDefaultLoanFee() + holding.calculateLateFee()));
+			super.getBorrowingHistory().addHistoryRecord(histrecord);
+			
+			// Finally, set the holding to no longer be on loan
+			holding.onLoan(false);
 		}
 	}
 	
@@ -41,8 +59,5 @@ public class StandardMember extends AbstractMember {
 		return super.getMemberId()+":"+super.getFullName()+":"+super.calculateRemainingCredit()+":"+"STANDARD";
 	}
 
-
-	
-	
 
 }

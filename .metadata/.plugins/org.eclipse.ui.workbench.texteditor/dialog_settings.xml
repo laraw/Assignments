@@ -3,26 +3,26 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
 		<item value="361" key="DIALOG_Y_ORIGIN"/>
-		<item value="916" key="DIALOG_X_ORIGIN"/>
 		<item value="380" key="DIALOG_HEIGHT"/>
+		<item value="916" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="CURRENT_DATE" key="selection"/>
+		<item value="test9" key="selection"/>
 		<list key="findhistory">
+			<item value="test9"/>
+			<item value="calculateRemainingCredit"/>
+			<item value="test7"/>
+			<item value="double"/>
+			<item value="test6"/>
+			<item value="checkforrecords"/>
 			<item value="CURRENT_DATE"/>
 			<item value="setDate"/>
-			<item value="borrowDate"/>
-			<item value="createDate"/>
-			<item value="Checking valid history record with getHistoryRecord()"/>
-			<item value="addhistory"/>
-			<item value="test6"/>
-			<item value="getborrowinghistory"/>
 		</list>
 		<list key="replacehistory">
 		</list>

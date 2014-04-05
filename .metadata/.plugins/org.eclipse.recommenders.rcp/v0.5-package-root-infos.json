@@ -176,9 +176,9 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "8348ffceddde6f58ddebc0e54aa905e25d03abef",
-    "jarFileModificationDate": "2013-12-01T16:25:43.416+10:00",
-    "location": "C:\\Program Files\\Java\\jre7\\lib\\ext\\jaccess.jar",
+    "jarFileFingerprint": "16c2f22bbf5f8781b37b32ceae582ed3012131d2",
+    "jarFileModificationDate": "2013-12-01T16:25:43.458+10:00",
+    "location": "C:\\Program Files\\Java\\jre7\\lib\\jfr.jar",
     "javaRuntime": true
   },
   {
@@ -189,9 +189,9 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "16c2f22bbf5f8781b37b32ceae582ed3012131d2",
-    "jarFileModificationDate": "2013-12-01T16:25:43.458+10:00",
-    "location": "C:\\Program Files\\Java\\jre7\\lib\\jfr.jar",
+    "jarFileFingerprint": "8348ffceddde6f58ddebc0e54aa905e25d03abef",
+    "jarFileModificationDate": "2013-12-01T16:25:43.416+10:00",
+    "location": "C:\\Program Files\\Java\\jre7\\lib\\ext\\jaccess.jar",
     "javaRuntime": true
   },
   {
@@ -208,19 +208,6 @@
     "javaRuntime": true
   },
   {
-    "symbolicName": "jre",
-    "version": {
-      "major": 1,
-      "minor": 0,
-      "micro": 0,
-      "qualifier": ""
-    },
-    "jarFileFingerprint": "36d1d282d74feb2ee8fadf44c737098f150d0084",
-    "jarFileModificationDate": "2013-12-01T16:25:47.574+10:00",
-    "location": "C:\\Program Files\\Java\\jre7\\lib\\rt.jar",
-    "javaRuntime": true
-  },
-  {
     "symbolicName": "org.hsqldb.hsqldb",
     "version": {
       "major": 2,
@@ -232,6 +219,19 @@
     "jarFileModificationDate": "2013-12-01T16:43:53.881+10:00",
     "location": "C:\\Users\\Lara\\Documents\\workspace\\ConnectMySQL\\lib\\hsqldb.jar",
     "javaRuntime": false
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "36d1d282d74feb2ee8fadf44c737098f150d0084",
+    "jarFileModificationDate": "2013-12-01T16:25:47.574+10:00",
+    "location": "C:\\Program Files\\Java\\jre7\\lib\\rt.jar",
+    "javaRuntime": true
   },
   {
     "symbolicName": "jre",

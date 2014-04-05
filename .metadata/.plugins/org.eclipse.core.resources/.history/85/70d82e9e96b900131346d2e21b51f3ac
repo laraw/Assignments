@@ -1,0 +1,101 @@
+package lms.model;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+import lms.model.exception.InsufficientCreditException;
+import lms.model.exception.MultipleBorrowingException;
+import lms.model.util.DateUtil;
+
+public abstract class AbstractMember implements Member {
+
+	private String memberID;
+	private String fullname;
+	private BorrowingHistory history = new BorrowingHistory();
+	private ArrayList<Holding> currentholdings = new ArrayList<Holding>();
+	private int credit;
+	private int maxcredit;
+	
+	public AbstractMember() {
+	}
+	
+	public AbstractMember(String memberID, String fullname, int credit, int maxcredit) {
+		this.memberID = memberID;
+		this.fullname = fullname;
+		this.credit = credit;
+		this.maxcredit = maxcredit;
+	}
+	
+	@Override
+	public void borrowHolding(Holding holding) throws MultipleBorrowingException, InsufficientCreditException {
+		
+				
+		if (history.getHistoryRecord(holding.getCode()) != null) {
+			throw new MultipleBorrowingException("This holding has already been borrowed and cannot be borrowed again");
+		}
+		
+		else if (this.calculateRemainingCredit() < holding.getDefaultLoanFee()) {
+			throw new InsufficientCreditException("Member does not have sufficient credit");
+		}
+		
+		
+		else {
+			holding.onLoan(true);
+			currentholdings.add(holding);
+			this.credit -= holding.getDefaultLoanFee();
+			holding.setBorrowDate(DateUtil.getInstance().getDate());
+		
+		}
+		
+		
+	};
+	
+
+	@Override
+	public void calculateRemainingCredit(Holding holding) {
+		this.credit -= holding.calculateLateFee();
+	};
+
+
+	@Override
+	public BorrowingHistory getBorrowingHistory() {
+		return history;
+	}
+
+	@Override
+	public ArrayList<Holding> getCurrentHoldings() {
+		return currentholdings;
+	}
+
+	@Override
+	public String getFullName() {
+		return fullname;
+	}
+
+	@Override
+	public abstract int getMaxCredit();
+
+	@Override
+	public String getMemberId() {
+		return memberID;
+	}
+
+	@Override
+	public void resetCredit() {	
+		credit = maxcredit;
+	};
+	
+	@Override
+	public abstract void returnHolding(Holding holding) throws Exception;
+	
+	public String toString() {
+		return memberID+":"+fullname+":";
+	}
+	
+	public int getCredit () {
+		return credit;
+	}
+
+}

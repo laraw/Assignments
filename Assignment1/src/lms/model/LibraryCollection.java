@@ -1,15 +1,25 @@
+/** 
+Assignment 1, Programming 2, RMIT University. 
+Author: Lara Wilkinson s3342496
+Date: 04/02/2014
+
+Description:  The library collection is a collection of all the holdings in the library. Holdings can be added and removed
+from a collection and can also be searched on for more information, usually by passing the parameter of the Holding Code. 
+**/
+
 package lms.model;
 
 import java.util.*;
-
 
 public class LibraryCollection {
 	
 	private String code;
 	private String name;
+	
+	// This initialises the holdings array, which stores the holdings within the collection
+	
 	private ArrayList<Holding> holdings = new ArrayList<Holding>();
 	
-		
 	
 	public LibraryCollection(String collectionCode, String name) {
 		this.code = collectionCode;
@@ -20,10 +30,19 @@ public class LibraryCollection {
 	public LibraryCollection() {
 	}
 
-
+	
+	/** Allows for a holding to be added to the library collection. If a holding is already in the collection, the 
+	 	method will return a false value **/
+	
 	public boolean addHolding(Holding holding)  {
+	
+		// Initialise the boolean value to default to true, and only set to false if there is an existing holding
 		
 		boolean addok = true;
+		
+		/** First test to ensure that the holdings array contains any holdings, then loop through the holdings collection
+			to determine whether the holding already exists in the collection. If there is a match, set the return boolean
+			to false **/
 		
 		if (holdings.size() != 0) {
 			for (int i = 0; i < holdings.size(); i++) {
@@ -34,6 +53,8 @@ public class LibraryCollection {
 			}
 		}
 		
+		// If the holding isn't in the collection, add the holding
+		
 		if (addok) {			
 			holdings.add(holding);
 		}
@@ -42,11 +63,14 @@ public class LibraryCollection {
 		
 	}
 	
+	// Returns all holdings in the collection
+	
 	public ArrayList<Holding> getAllHoldings() {
 			return holdings;
-		
-		
+				
 	}
+	
+	// Returns the holding requested using the holding code from the collection
 	
 	public Holding getHolding(int code) {
 		for(int i = 0; i < holdings.size(); i++) {
@@ -58,7 +82,14 @@ public class LibraryCollection {
 		return null;
 	}
 	
+	// Removes the holding from the collection
+	
 	public boolean removeHolding(int code)  {
+		
+		/** First search the collection for the holding with the code that matches the code passed in.
+		    If the holding is on loan, it cannot be removed. This method returns a false if the holding
+		    cannot be removed.
+		 **/
 		
 		for (int i = 0; i < holdings.size(); i++) {
 			if(holdings.get(i).getCode() == code) {
@@ -75,21 +106,24 @@ public class LibraryCollection {
 		return false;
 	}
 	
+	
+	// Provides a string representation of the library collection
+	
 	public String toString() {
 		String holdinglist = "";
 		
+		// To get a string of holding codes for a library collection, we will need to loop through the collection 
 		if (holdings.size() != 0) {	
 			for (int i = 0; i < holdings.size(); i++) {
 				if(i != holdings.size()-1) {
-				holdinglist = holdinglist + holdings.get(i).getCode() +",";
-			}
-			else {
+					holdinglist = holdinglist + holdings.get(i).getCode() +",";
+				}
+				else {
 					holdinglist = holdinglist + holdings.get(i).getCode();
+				}
 			}
 		}
-		}
-		return code+":"+name+":"+holdinglist;
 		
-		
+		return code+":"+name+":"+holdinglist;				
 	}
 }

@@ -1,0 +1,48 @@
+package lms.model;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+import lms.model.exception.InsufficientCreditException;
+
+public class PremiumMember extends AbstractMember {
+
+	private static final int PREMIUM_MAX_CREDIT = 45;
+	ArrayList<Holding> currentholdings = super.getCurrentHoldings();
+	
+	public PremiumMember() {
+		
+	}
+
+	public PremiumMember(String premiumMemberId, String premiumMemberName) {
+		super(premiumMemberId, premiumMemberName, PREMIUM_MAX_CREDIT, PREMIUM_MAX_CREDIT);
+		
+	}
+
+	public int getMaxCredit() {
+		return PREMIUM_MAX_CREDIT;
+	};
+
+	
+	public void returnHolding(Holding holding) {
+		// First calculate & deduct any late fees from the members account
+		super.deductLateFee((int)(holding.calculateLateFee()));
+		
+		// Remove the current holding from the collection of current member holdings
+		super.getCurrentHoldings().remove(holding);
+		
+		// Create a new history record and add it to the members history
+		
+		HistoryRecord histrecord = new HistoryRecord(holding, (int)(holding.calculateLateFee()));
+		super.getBorrowingHistory().addHistoryRecord(histrecord);
+		
+		// Finally, set the holding to no longer be on loan
+		holding.onLoan(false);	
+	}
+	
+	public String toString() {
+		return super.getMemberId()+":"+super.getFullName()+":"+super.calculateRemainingCredit() +":"+"PREMIUM";
+	}
+
+	
+}
